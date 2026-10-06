@@ -1,23 +1,85 @@
 /* ==================== ONTOH Common Scripts ==================== */
 
+// ==================== GSAP · 전역 초기화 (사이트 전체 공통) ====================
+// GSAP CDN이 로드되어 있으면 CustomEase 등록 · 기본 easing 설정
+if (typeof gsap !== 'undefined') {
+  if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+  if (typeof CustomEase !== 'undefined') {
+    CustomEase.create('ontoh', '0.16, 1, 0.3, 1'); // ONTOH 시그니처 easing (cubic-bezier와 동일)
+    gsap.defaults({ ease: 'ontoh', duration: 0.9 });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
-  // ==================== Scroll Reveal (IntersectionObserver) ====================
-  const revealObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
+  // ==================== Scroll Reveal (GSAP ScrollTrigger · fallback IntersectionObserver) ====================
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    // GSAP 방식 · 진입/역방향 시 자연스러운 재생
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      gsap.fromTo(el,
+        { y: 32, opacity: 0, filter: 'blur(4px)' },
+        {
+          y: 0, opacity: 1, filter: 'blur(0px)',
+          duration: 0.9, ease: 'ontoh',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none reverse',
+          },
+          onStart: function() { el.classList.add('visible'); },
+        }
+      );
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
+  } else {
+    // Fallback · GSAP 미로드 시 기존 IntersectionObserver
+    const revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+  }
 
-  document.querySelectorAll('.reveal').forEach(function(el) {
-    revealObserver.observe(el);
-  });
+  // ==================== Hero 시퀀스 인트로 + Ken Burns 배경 (data-hero-* 자동 매칭) ====================
+  // 모든 페이지에 자동 적용 · data-hero-kicker/title/subtitle 있으면 순차 등장 · data-hero-kb 있으면 배경 Ken Burns
+  if (typeof gsap !== 'undefined') {
+    var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduce) {
+      // Hero 시퀀스 인트로
+      var heroEls = [
+        document.querySelector('[data-hero-kicker]'),
+        document.querySelector('[data-hero-title]'),
+        document.querySelector('[data-hero-subtitle]'),
+      ].filter(Boolean);
+      if (heroEls.length) {
+        gsap.set(heroEls, { y: 24, opacity: 0 });
+        var heroTl = gsap.timeline({ delay: 0.15 });
+        heroEls.forEach(function(el, i) {
+          heroTl.to(el, { y: 0, opacity: 1, duration: 0.9, ease: 'ontoh' }, i === 0 ? 0 : '-=0.45');
+        });
+      }
+      // Ken Burns Hero 배경
+      var heroKb = document.querySelector('[data-hero-kb]');
+      if (heroKb) {
+        gsap.set(heroKb, { scale: 1.05, x: 0, y: 0 });
+        gsap.to(heroKb, {
+          scale: 1.22, x: -30, y: -20,
+          duration: 12, ease: 'none', repeat: -1, yoyo: true,
+        });
+      }
+    }
+  } else {
+    // Fallback · GSAP 미로드 시 opacity 원복
+    document.querySelectorAll('[data-hero-kicker], [data-hero-title], [data-hero-subtitle]').forEach(function(el) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  }
 
   // ==================== Nav: 투명 → 글래스 전환 ====================
   const nav = document.getElementById('mainNav');

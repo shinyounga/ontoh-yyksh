@@ -1,24 +1,27 @@
-# Editor directories and files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS files
 .DS_Store
-Thumbs.db
+._*
+**/._*
+# 특허등록원부 이미지는 재무·개인정보 포함 → 저장소 제외 (원본 PDF는 assets/patent/에 있음)
+assets/tech/patents/patent-registry-*
+.claude/
+etc/
+archive/
+supanova-design-skill/
+CLAUDE.md
+DESIGN_PRINCIPLES.md
+DESIGN_REFERENCE_ANALYSIS.md
+건설사_웹디자인_레퍼런스.md
+*copy*.html
+*.pdf
+sijae/
 
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# 각 폴더 내 archive 제외
+**/archive/
 
-# Temporary files
-*.tmp
-*.temp
+# 대용량 원본 소스 · AI 처리 백업 (웹사이트 미사용, GitHub 100MB 파일 제한 위반)
+assets/vision/vid/
+assets/vision/processed/
+assets/vision/site/processed/
 
-# Backup files
-*.bak
-*~
+# 로컬 프리뷰 실행 스크립트 (배포는 저장소 전체를 업로드하므로 공개 방지)
+serve.bat
