@@ -13,6 +13,7 @@
 - 연구진: 건설·컴퓨터비전 분야 석·박사 연구진
 - 지식재산: 특허 등록 2건 · 출원 3건 ((주)온토 단독 특허권자). 핵심 기술: 원거리 객체 검출, 학습데이터 자동 생성, 생성형 AI 기반 위험 판별
 - 학술 성과: SCI(E) 국제 학술지 5편 (Automation in Construction, Computers in Industry, KSCE Journal of Civil Engineering 등), 국제 학회 6편, 국내 학회 2편
+- 현장 도입: 금호건설 공급 계약 체결 · 건설현장 AI 안전관제 현장 도입 완료
 - 주요 이력: 예비창업패키지 딥테크 분야 최우수 기업(2025, 중소벤처기업부), 청년창업사관학교 기본과정 선정(2026, 중소벤처기업부), 캠퍼스타운 S-CUBE 입주기업(2026), 제3기 서대문구 청년벤처 육성사업 참여기업(2026)
 
 ## 제품
@@ -37,7 +38,7 @@
 ## 주요 페이지
 
 - [홈](https://ontoh.co.kr/)
-- [회사소개](https://ontoh.co.kr/about.html): 비전·미션, 회사개요, 연혁, 특허·논문 요약, 함께하는 기관
+- [회사소개](https://ontoh.co.kr/about.html): 비전·미션, 회사개요, 연혁, 특허·논문 요약, 협력 · 지원 기관
 - [기술 · 연구 (특허 · 논문)](https://ontoh.co.kr/patents.html)
 - [테크 블로그](https://ontoh.co.kr/blog/)
 - [Tiny Object Detection과 PTZ 자율관제](https://ontoh.co.kr/blog/tiny-object-detection.html): 광역 CCTV에서 작은 객체를 검출하기 어려운 이유와 2단계 파이프라인 해법
