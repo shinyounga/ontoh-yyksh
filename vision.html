@@ -635,6 +635,27 @@
       .ptz-step { opacity:0 } .ptz-step:nth-of-type(3){ opacity:1 }
       .ptz-bar { width:100% }
     }
+  
+    /* 모바일 최적화 · 솔루션 페이지 상단 탭 바 · 도식 가로 넘침 방지 */
+    @media (max-width: 640px) {
+      .bc-cell { font-size: 14px; }
+      .bc-cell .bc-caret { display: none; }
+      .bc-cell.bc-menu { min-width: 0; padding: 0 10px; gap: 0; font-size: 13px; }
+      .bc-cell.bc-home { width: 44px; }
+      .bc-item { min-width: 0; }
+      .bc-row { min-width: 0; flex: 1 1 auto; }
+      .bc-panel { min-width: 100%; max-width: calc(100vw - 24px); }
+      .bc-panel .dropdown-link { padding: 14px 16px; }
+      .bc-strip-tools { flex-shrink: 0; gap: 0 !important; }
+      .bc-strip-tools button { min-width: 40px; justify-content: center; }
+      footer a[href$="terms.html"], footer a[href$="privacy.html"] { display: inline-block; padding: 12px 6px; }
+    }
+    @media (max-width: 480px) {
+      .kl { max-width: 100%; padding: 16px; }
+      .kl .kl-lb { white-space: normal; }
+      .kl .grid > * { min-width: 0; }
+      .md\:order-2:has(> .kl), div:has(> .kl) { min-width: 0; }
+    }
   </style>
   <script defer src="js/analytics.js"></script>
 </head>
@@ -734,7 +755,7 @@
         </nav>
 
         <!-- 우측: 글자크기 조절 (스트립 높이만큼 꽉찬 세로선) -->
-        <div class="inline-flex items-stretch gap-5 text-white/70 text-body-base">
+        <div class="bc-strip-tools inline-flex items-stretch gap-5 text-white/70 text-body-base">
           <span class="w-px bg-white/25" aria-hidden="true"></span>
           <button type="button" onclick="fontResize('up')" class="hover:text-white transition-colors font-semibold flex items-center leading-none" aria-label="글자 크게">+</button>
           <span class="w-px bg-white/25" aria-hidden="true"></span>
