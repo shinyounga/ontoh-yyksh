@@ -54,7 +54,7 @@
           "name": "김태건",
           "jobTitle": "대표이사"
         },
-        "email": "ktg@ontoh.co.kr",
+        "email": "contact@ontoh.co.kr",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "연세로2나길 61 캠퍼스타운에스큐브 304호",
@@ -66,7 +66,7 @@
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "sales",
-          "email": "ktg@ontoh.co.kr",
+          "email": "contact@ontoh.co.kr",
           "url": "https://ontoh.co.kr/contact.html",
           "availableLanguage": [
             "Korean"
@@ -113,7 +113,7 @@
         },
         "primaryImageOfPage": {
           "@type": "ImageObject",
-          "url": "https://ontoh.co.kr/assets/og/home.jpg"
+          "url": "https://ontoh.co.kr/assets/og/home.webp"
         },
         "mainEntity": [
           {
@@ -381,6 +381,7 @@
     }
   </style>
   <script defer src="js/analytics.js"></script>
+  <script defer src="js/kakao-widget.js"></script>
 </head>
 <body class="bg-white font-sans antialiased">
   <!-- Skip to content · WCAG 2.4.1 -->
@@ -446,18 +447,23 @@
       <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
         <div>
           <h1 class="reveal text-[52px] md:text-[80px] font-extrabold tracking-tight text-ink" style="line-height:1.05; letter-spacing:-0.035em;">
-            <img src="assets/logo/lookat/lookat-wordmark.png" alt="LOOKAT 루캣" class="h-12 md:h-[72px] w-auto" width="2533" height="421">
+            <img src="assets/logo/lookat/lookat-wordmark.webp" alt="LOOKAT 루캣" class="h-12 md:h-[72px] w-auto" width="2533" height="421">
           </h1>
           <p class="reveal stagger-1 mt-6 text-[19px] md:text-[24px] font-semibold text-sub" style="letter-spacing:-0.015em;">현장을 살피고, AI로 판단하다 · 건설현장 Edge AI 솔루션</p>
-          <div class="reveal stagger-3 mt-9 flex flex-col sm:flex-row sm:items-center gap-3.5">
+          <ul class="reveal stagger-2 mt-3 flex flex-wrap gap-2" aria-label="핵심 기술">
+            <li class="tag bg-accent/10 text-accent text-[13px]" style="font-size:13px; padding:5px 11px;">Edge AI</li>
+            <li class="tag bg-accent/10 text-accent text-[13px]" style="font-size:13px; padding:5px 11px;">AUTO PTZ</li>
+            <li class="tag bg-accent/10 text-accent text-[13px]" style="font-size:13px; padding:5px 11px;">생성형 AI 기반 법령 매칭</li>
+          </ul>
+          <div class="reveal stagger-3 mt-5 flex flex-col sm:flex-row sm:items-center gap-3.5">
             <a href="contact.html" class="btn btn-primary btn-md">문의하기 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
             <a href="vision.html" class="inline-flex items-center justify-center gap-2 border border-hair text-ink px-7 py-3.5 text-[18px] font-bold hover:bg-band transition-colors">솔루션 살펴보기</a>
           </div>
           <!-- 검증 요약 · 기술력 섹션을 대체 -->
-          <a href="patents.html" class="reveal stagger-3 group mt-9 pt-7 border-t border-hair flex flex-wrap items-center gap-x-12 gap-y-5">
+          <a href="patents.html" class="reveal stagger-3 group mt-6 pt-5 border-t border-hair flex flex-wrap items-center gap-x-12 gap-y-5">
             <span class="block">
-              <span class="block leading-none text-ink"><span class="stat-num counter-up text-[40px] md:text-[44px] font-extrabold" data-count="5">5</span><span class="ml-1 text-[20px] font-bold">건</span></span>
-              <span class="block mt-2.5 text-[16px] font-semibold text-body leading-none">특허 출원 · 등록</span>
+              <span class="block leading-none text-ink"><span class="stat-num counter-up text-[40px] md:text-[44px] font-extrabold" data-count="3">3</span><span class="ml-1 text-[20px] font-bold">건</span></span>
+              <span class="block mt-2.5 text-[16px] font-semibold text-body leading-none">등록 특허</span>
             </span>
             <span class="w-px self-stretch bg-hair hidden sm:block" aria-hidden="true"></span>
             <span class="block">
@@ -468,20 +474,12 @@
           </a>
         </div>
         <div class="reveal stagger-2">
-          <div id="hero-cycle" class="relative overflow-hidden shadow-[0_30px_60px_-30px_rgba(10,36,64,0.45)] aspect-[4/3] bg-ink">
-            <!-- 2-layer alternating slots · Ken Burns during each stage -->
-            <img class="hc-slot absolute inset-0 w-full h-full object-cover will-change-transform" data-slot="0" alt="">
-            <img class="hc-slot absolute inset-0 w-full h-full object-cover opacity-0 will-change-transform" data-slot="1" alt="">
-            <!-- 카테고리 진행 dots (상단) -->
-            <div id="hero-dots" class="absolute top-3 right-3 flex gap-1.5 z-10">
-              <span class="hero-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all" data-cat="0"></span>
-              <span class="hero-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all" data-cat="1"></span>
-              <span class="hero-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all" data-cat="2"></span>
-            </div>
-            <!-- LIVE 뱃지 -->
-            <div id="hero-badge" class="absolute bottom-3 left-3 inline-flex items-center gap-2 bg-white/95 backdrop-blur text-ink text-[12px] font-bold px-3 py-1.5 shadow-sm z-10">
-              <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> <span id="hero-badge-text">찾는 중 · 실시간 현장 영상</span>
-            </div>
+          <!-- 히어로 비주얼 · LOOKAT 1→2→3 순환 -->
+          <div id="hero-slides" class="relative aspect-[1105/1040] bg-white overflow-hidden">
+            <img src="assets/hero/hero-lookat-1.webp" alt="LOOKAT · 작업자·개구부 AI 인식" width="1105" height="1040" data-group="LOOKAT" class="hs-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700" fetchpriority="high">
+            <img src="assets/hero/hero-lookat-2.webp" alt="LOOKAT 장비" width="1105" height="1040" data-group="LOOKAT" class="hs-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700">
+            <img src="assets/hero/hero-lookat-3.webp" alt="LOOKAT 장비 · 근접 컷" width="1105" height="1040" data-group="LOOKAT" class="hs-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700">
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-white/85 rounded-full px-3 py-2" aria-hidden="true"><span class="hs-dot block h-1.5 w-1.5 rounded-full bg-ink/20 transition-all"></span><span class="hs-dot block h-1.5 w-1.5 rounded-full bg-ink/20 transition-all"></span><span class="hs-dot block h-1.5 w-1.5 rounded-full bg-ink/20 transition-all"></span></div>
           </div>
         </div>
       </div>
@@ -506,7 +504,7 @@
             <span class="bento-cta">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
           </div>
           <div class="bento-art">
-            <img src="assets/vision/dashboard2.png" alt="LOOKAT 자율 관제 대시보드 화면" loading="lazy">
+            <img src="assets/vision/dashboard2.webp" alt="LOOKAT 자율 관제 대시보드 화면" loading="lazy">
           </div>
         </a>
         <a href="health.html" class="bento reveal stagger-1 group">
@@ -517,12 +515,12 @@
             <span class="bento-cta">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
           </div>
           <div class="bento-art bento-art-tall">
-            <img src="assets/health/hero-dashboard.png" alt="ONTOH CARE 작업자 보건관리 앱 화면" loading="lazy">
+            <img src="assets/health/hero-dashboard.webp" alt="ONTOH CARE 작업자 보건관리 앱 화면" loading="lazy">
           </div>
         </a>
       </div>
       <a href="lookat-note.html" class="reveal mt-4 md:mt-5 group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 bg-white border border-hair px-6 md:px-8 py-5 hover:border-ink/30 transition-colors">
-        <img src="assets/logo/lookat/lookat-symbol.png" alt="" aria-hidden="true" class="w-10 h-10 shrink-0">
+        <img src="assets/logo/lookat/lookat-symbol.webp" alt="" aria-hidden="true" class="w-10 h-10 shrink-0">
         <p class="flex-1 text-[17px] md:text-[18px] text-sub leading-[1.6]"><b class="text-ink"><span class="font-brand">LOOKAT NOTE</span></b> <span class="hidden sm:inline">·</span> 사진과 음성만으로 작업일지 · 점검보고서를 완성하는 현장관리 앱</p>
         <span class="inline-flex items-center gap-1.5 text-[15px] font-bold text-accent group-hover:gap-2.5 transition-all shrink-0">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
       </a>
@@ -555,7 +553,7 @@
         <div class="reveal stagger-2 bg-white p-7 md:p-8 flex flex-col">
           <iconify-icon icon="solar:shield-keyhole-linear" class="self-start text-accent text-[32px]"></iconify-icon>
           <p class="mt-5 text-body-sm font-bold text-accent">지식재산권</p>
-          <p class="mt-2 text-h3 font-bold text-ink leading-snug" style="letter-spacing:-0.015em;">핵심 기술 특허 5건</p>
+          <p class="mt-2 text-h3 font-bold text-ink leading-snug" style="letter-spacing:-0.015em;">핵심 기술 특허 3건</p>
           <p class="mt-3 text-body-base text-sub leading-[1.6]">원거리 객체 검출 · 생성형 AI 위험 판별<br>등 핵심 기술 자체 보유</p>
         </div>
         <div class="reveal stagger-3 bg-white p-7 md:p-8 flex flex-col">
@@ -565,28 +563,27 @@
           <p class="mt-3 text-body-base text-sub leading-[1.6]">2026 입주기업 선정<br>서울특별시 · 연세대학교 · 서대문구</p>
         </div>
       </div>
-      <div class="mt-12 flex items-center justify-between gap-4">
+      <div class="mt-12">
         <p class="text-caption font-extrabold text-sub/85 uppercase tracking-[0.14em]">협력 · 지원 기관</p>
-        <a href="about.html#partners" class="inline-flex items-center gap-1.5 text-body-base font-bold text-accent hover:gap-2.5 transition-all">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
       </div>
       <div class="reveal lg-marquee border-t border-hair mt-5 pt-10">
         <ul class="lg-track">
           <li><img src="assets/logo/partners/web/kumho.svg" alt="금호건설" class="h-10 md:h-12" loading="lazy"></li>
-          <li><img src="assets/logo/partners/web/yonsei.png" alt="연세대학교" class="h-11 md:h-[52px]" loading="lazy"></li>
-          <li><img src="assets/logo/partners/web/smart-construction.png" alt="스마트건설사업단" class="h-5 md:h-6" loading="lazy"></li>
-          <li><img src="assets/logo/partners/web/molit.png" alt="국토교통부" class="h-8 md:h-10" loading="lazy"></li>
+          <li><img src="assets/logo/partners/web/yonsei.webp" alt="연세대학교" class="h-11 md:h-[52px]" loading="lazy"></li>
+          <li><img src="assets/logo/partners/web/smart-construction.webp" alt="스마트건설사업단" class="h-5 md:h-6" loading="lazy"></li>
+          <li><img src="assets/logo/partners/web/molit.webp" alt="국토교통부" class="h-8 md:h-10" loading="lazy"></li>
           <li><img src="assets/logo/partners/web/kaia.svg" alt="국토교통과학기술진흥원 KAIA" class="h-8 md:h-10" loading="lazy"></li>
-          <li><img src="assets/logo/partners/web/ktl.png" alt="한국산업기술시험원 KTL" class="h-8 md:h-10" loading="lazy"></li>
-          <li><img src="assets/logo/partners/web/seoul.png" alt="서울특별시" class="h-8 md:h-10" loading="lazy"></li>
-          <li><img src="assets/logo/partners/web/seodaemun.png" alt="서대문구" class="h-8 md:h-10" loading="lazy"></li>
+          <li><img src="assets/logo/partners/web/ktl.webp" alt="한국산업기술시험원 KTL" class="h-8 md:h-10" loading="lazy"></li>
+          <li><img src="assets/logo/partners/web/seoul.webp" alt="서울특별시" class="h-8 md:h-10" loading="lazy"></li>
+          <li><img src="assets/logo/partners/web/seodaemun.webp" alt="서대문구" class="h-8 md:h-10" loading="lazy"></li>
           <li aria-hidden="true"><img src="assets/logo/partners/web/kumho.svg" alt="" class="h-10 md:h-12" loading="lazy"></li>
-          <li aria-hidden="true"><img src="assets/logo/partners/web/yonsei.png" alt="" class="h-11 md:h-[52px]" loading="lazy"></li>
-          <li aria-hidden="true"><img src="assets/logo/partners/web/smart-construction.png" alt="" class="h-5 md:h-6" loading="lazy"></li>
-          <li aria-hidden="true"><img src="assets/logo/partners/web/molit.png" alt="" class="h-8 md:h-10" loading="lazy"></li>
+          <li aria-hidden="true"><img src="assets/logo/partners/web/yonsei.webp" alt="" class="h-11 md:h-[52px]" loading="lazy"></li>
+          <li aria-hidden="true"><img src="assets/logo/partners/web/smart-construction.webp" alt="" class="h-5 md:h-6" loading="lazy"></li>
+          <li aria-hidden="true"><img src="assets/logo/partners/web/molit.webp" alt="" class="h-8 md:h-10" loading="lazy"></li>
           <li aria-hidden="true"><img src="assets/logo/partners/web/kaia.svg" alt="" class="h-8 md:h-10" loading="lazy"></li>
-          <li aria-hidden="true"><img src="assets/logo/partners/web/ktl.png" alt="" class="h-8 md:h-10" loading="lazy"></li>
-          <li aria-hidden="true"><img src="assets/logo/partners/web/seoul.png" alt="" class="h-8 md:h-10" loading="lazy"></li>
-          <li aria-hidden="true"><img src="assets/logo/partners/web/seodaemun.png" alt="" class="h-8 md:h-10" loading="lazy"></li>
+          <li aria-hidden="true"><img src="assets/logo/partners/web/ktl.webp" alt="" class="h-8 md:h-10" loading="lazy"></li>
+          <li aria-hidden="true"><img src="assets/logo/partners/web/seoul.webp" alt="" class="h-8 md:h-10" loading="lazy"></li>
+          <li aria-hidden="true"><img src="assets/logo/partners/web/seodaemun.webp" alt="" class="h-8 md:h-10" loading="lazy"></li>
         </ul>
       </div>
     </div>
@@ -641,43 +638,6 @@
   </section>
 
 
-  <!-- ==================== 카카오톡 상담 · 플로팅 런처 + 인사 카드 ==================== -->
-  <div class="kakao-fab">
-    <div class="kakao-card" id="kakaoCard" role="dialog" aria-labelledby="kakaoCardTitle" aria-hidden="true">
-      <button type="button" class="kakao-card-close" data-kakao-close aria-label="닫기"><iconify-icon icon="solar:close-small-linear" class="text-[20px]"></iconify-icon></button>
-      <div class="flex items-center gap-3 pr-6">
-        <img src="assets/logo/lookat/lookat-symbol.png" alt="" aria-hidden="true" class="w-10 h-10">
-        <div>
-          <p id="kakaoCardTitle" class="text-[15px] font-bold text-ink leading-tight"><img src="assets/logo/ontoh/ontoh-wordmark-tight.svg" alt="ONTOH" class="inline-block h-[11px] w-auto mr-1.5" style="vertical-align:0">도입 상담</p>
-          <p class="mt-0.5 text-[12px] text-sub">카카오톡 채널 1:1 상담</p>
-        </div>
-      </div>
-      <p class="mt-4 text-[14.5px] text-body leading-[1.6]">현장 도입이나 구성이 궁금하신가요?<br>편하게 물어보세요.</p>
-      <a href="https://pf.kakao.com/_TqExiX/chat" target="_blank" rel="noopener" class="mt-4 flex items-center justify-center gap-2 bg-[#FEE500] text-[#191919] h-11 text-[15px] font-bold hover:brightness-95 transition">
-        <span class="text-[20px] inline-flex"><svg viewBox="0 0 24 24" aria-hidden="true" class="kakao-sym"><path fill="currentColor" d="M12 3.2C6.6 3.2 2.3 6.6 2.3 10.8c0 2.7 1.8 5.1 4.6 6.5l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.5.1 1 .1 1.5.1 5.4 0 9.7-3.4 9.7-7.6S17.4 3.2 12 3.2z"/></svg></span>카카오톡 상담하기
-      </a>
-      <a href="https://pf.kakao.com/_TqExiX/friend" target="_blank" rel="noopener" class="mt-2.5 block text-center text-[13px] font-semibold text-sub hover:text-ink underline-offset-2 hover:underline">채널 추가하고 소식 받기</a>
-    </div>
-    <a href="https://pf.kakao.com/_TqExiX/chat" target="_blank" rel="noopener" class="kakao-launcher" aria-label="카카오톡으로 상담하기 (새 창)">
-      <svg viewBox="0 0 24 24" aria-hidden="true" class="kakao-sym"><path fill="currentColor" d="M12 3.2C6.6 3.2 2.3 6.6 2.3 10.8c0 2.7 1.8 5.1 4.6 6.5l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.5.1 1 .1 1.5.1 5.4 0 9.7-3.4 9.7-7.6S17.4 3.2 12 3.2z"/></svg><span class="kakao-tip" aria-hidden="true">카카오톡 상담</span>
-    </a>
-  </div>
-  <script>
-    (function () {
-      var card = document.getElementById('kakaoCard');
-      if (!card) return;
-      var KEY = 'ontoh-kakao-card-closed';
-      var closed = false;
-      try { closed = sessionStorage.getItem(KEY) === '1'; } catch (e) {}
-      function close() {
-        card.classList.remove('is-open'); card.setAttribute('aria-hidden', 'true');
-        try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
-      }
-      card.querySelector('[data-kakao-close]').addEventListener('click', close);
-      if (!closed) setTimeout(function () { card.classList.add('is-open'); card.setAttribute('aria-hidden', 'false'); }, 2500);
-    })();
-  </script>
-
   <!-- ==================== 강화 푸터 ==================== -->
   </main>
   <footer class="bg-[#E9ECEF] text-sub border-t border-hair">
@@ -702,7 +662,7 @@
         <span class="text-sub/40" aria-hidden="true">|</span>
         <span><span class="font-semibold">사업자등록번호</span> 230-88-03436</span>
         <span class="text-sub/40" aria-hidden="true">|</span>
-        <span><span class="font-semibold">이메일</span> <a href="mailto:ktg@ontoh.co.kr" class="hover:text-ink transition-colors">ktg@ontoh.co.kr</a></span>
+        <span><span class="font-semibold">이메일</span> <a href="mailto:contact@ontoh.co.kr" class="hover:text-ink transition-colors">contact@ontoh.co.kr</a></span>
         <span class="text-sub/40" aria-hidden="true">|</span>
         <span><span class="font-semibold">주소</span> (03777) 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</span>
       </div>
@@ -717,85 +677,20 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
   <script src="js/common.js"></script>
 
-  <!-- ==================== Hero 우측 · 3-카테고리 × 3-stage 사이클 + Ken Burns 전환 ==================== -->
+  <!-- ==================== Hero 우측 · LOOKAT 1→2→3 순환 ==================== -->
   <script>
-    if (typeof gsap !== 'undefined') {
-      document.addEventListener('DOMContentLoaded', function() {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        var cycleEl = document.getElementById('hero-cycle');
-        var badgeText = document.getElementById('hero-badge-text');
-        if (!cycleEl || !badgeText) return;
-
-        var BASE = 'assets/vision/detection/selected/';
-        // 3 카테고리 × 3 stage (clean → seg → bbox) = 9 stages
-        var STAGES = [
-          // Case 01 · 개구부
-          { src: BASE + '05-opening/opening-004-clean.png',        label: '찾는 중 · 실시간 현장 영상',      alt: '개구부 · 원본 CCTV', cat: 0 },
-          { src: BASE + '05-opening/opening-004-segmentation.png', label: '판단 중 · 작업자 · 위험 영역 인식',       alt: '개구부 · AI 감지 · 영역 분리', cat: 0 },
-          { src: BASE + '05-opening/opening-004-bbox.png',         label: '위험 확인 · 개구부 덮개 · 난간 미설치', alt: '개구부 안전조치 미비 · UNSAFE', cat: 0 },
-          // Case 02 · 안전대
-          { src: BASE + '02-fall-strap/fall-strap-003-clean.png',        label: '찾는 중 · 실시간 현장 영상',        alt: '고소작업 · 원본 CCTV', cat: 1 },
-          { src: BASE + '02-fall-strap/fall-strap-003-segmentation.png', label: '판단 중 · 작업자 · 위험 영역 인식',         alt: '고소작업 · AI 감지 · 영역 분리', cat: 1 },
-          { src: BASE + '02-fall-strap/fall-strap-003-bbox.png',         label: '위험 확인 · 고소작업 안전대 미착용', alt: '고소작업 안전대 미착용 · UNSAFE', cat: 1 },
-          // Case 03 · 상하동시작업
-          { src: BASE + '01-simultaneous-work/simultaneous-work-001-clean.png',        label: '찾는 중 · 실시간 현장 영상',        alt: '상하동시작업 · 원본 CCTV', cat: 2 },
-          { src: BASE + '01-simultaneous-work/simultaneous-work-001-segmentation.png', label: '판단 중 · 작업자 · 위험 영역 인식',         alt: '상하동시작업 · AI 감지 · 영역 분리', cat: 2 },
-          { src: BASE + '01-simultaneous-work/simultaneous-work-001-bbox.png',         label: '위험 확인 · 상하 동시작업 (낙하물 주의)', alt: '상하 동시작업 · 낙하물 주의 · UNSAFE', cat: 2 },
-        ];
-
-        // 이미지 preload
-        STAGES.forEach(function(s) { var img = new Image(); img.src = s.src; });
-
-        var slots = cycleEl.querySelectorAll('.hc-slot');
-        var dots = cycleEl.querySelectorAll('.hero-dot');
-        var idx = 0;
-        var activeSlot = 0;
-
-        function setStage(n) {
-          var stage = STAGES[n];
-          var newSlot = 1 - activeSlot;
-          var newEl = slots[newSlot];
-          var oldEl = slots[activeSlot];
-
-          // 새 이미지 세팅
-          newEl.src = stage.src;
-          newEl.alt = stage.alt;
-          gsap.set(newEl, { opacity: 0, scale: 1.1 });
-
-          // 동시 실행: cross-fade + Ken Burns (새 이미지가 살짝 확대되며 등장 · 스테이지 동안 서서히 원복)
-          var tl = gsap.timeline();
-          tl.to(newEl, { opacity: 1, duration: 0.7, ease: 'ontoh' }, 0)
-            .to(oldEl, { opacity: 0, duration: 0.7, ease: 'ontoh' }, 0)
-            .to(newEl, { scale: 1.0, duration: 2.4, ease: 'ontoh' }, 0);  // Ken Burns · 다음 stage 오기 전 자연스럽게 진행
-
-          activeSlot = newSlot;
-
-          // 뱃지 갱신 (플립 애니메이션)
-          gsap.to(badgeText, { opacity: 0, y: -6, duration: 0.2, ease: 'ontoh',
-            onComplete: function() {
-              badgeText.textContent = stage.label;
-              gsap.to(badgeText, { opacity: 1, y: 0, duration: 0.3, ease: 'ontoh' });
-            }
-          });
-
-          // 카테고리 dots 갱신
-          dots.forEach(function(dot, i) {
-            var isActive = i === stage.cat;
-            dot.style.background = isActive ? '#ffffff' : 'rgba(255,255,255,0.4)';
-            dot.style.width = isActive ? '18px' : '6px';
-            dot.style.borderRadius = isActive ? '3px' : '9999px';
-          });
-        }
-
-        function next() {
-          idx = (idx + 1) % STAGES.length;
-          setStage(idx);
-        }
-
-        setStage(0);
-        setInterval(next, 1500);  // 각 stage 1.5초 · 전체 loop 13.5초
-      });
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var root = document.getElementById('hero-slides'); if (!root) return;
+      var slides = root.querySelectorAll('.hs-slide'), dots = root.querySelectorAll('.hs-dot');
+      var i = 0, held = [1800, 1800, 2800];  // 단계별 노출 시간(ms) · 마지막 컷은 길게
+      function show(n) {
+        slides.forEach(function(el, k) { el.style.opacity = k === n ? '1' : '0'; });
+        dots.forEach(function(d, k) { d.style.width = k === n ? '18px' : '6px'; d.style.background = k === n ? '#0A2440' : ''; });
+      }
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { show(2); return; }
+      show(0);
+      (function tick() { setTimeout(function() { i = (i + 1) % slides.length; show(i); tick(); }, held[i]); })();
+    });
   </script>
 
   <!-- ==================== Ex 03 · 숫자 카운터 (index.html) ==================== -->

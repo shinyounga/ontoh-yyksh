@@ -139,7 +139,9 @@
       '#ontoh-analytics-banner button:hover{background:#F5F6F8}' +
       '#ontoh-analytics-banner button[data-choice="granted"]{background:#0A2440;color:#fff}' +
       '#ontoh-analytics-banner button[data-choice="granted"]:hover{background:#0169a9;border-color:#0169a9}' +
-      '.ontoh-analytics-settings{background:none;border:0;color:inherit;text-decoration:underline;cursor:pointer;font:inherit;padding:4px 0;margin-top:12px}' +
+      '.ontoh-analytics-settings{background:none;border:0;color:inherit;cursor:pointer;font:inherit;padding:0}' +
+      '.ontoh-analytics-settings:hover{text-decoration:underline}' +
+      '.ontoh-analytics-sep{opacity:.4}' +
       '#ontoh-analytics-banner button:focus-visible,#ontoh-analytics-banner a:focus-visible,.ontoh-analytics-settings:focus-visible{outline:3px solid #0169a9;outline-offset:3px}' +
       '@media(max-width:720px){#ontoh-analytics-banner{flex-direction:column;align-items:stretch;gap:10px;left:10px;right:10px;bottom:10px;padding:14px 14px 12px;max-height:calc(100dvh - 20px);overflow:auto}#ontoh-analytics-banner .analytics-icon{display:none}#ontoh-analytics-banner h2{font-size:15px;margin-bottom:2px}#ontoh-analytics-banner p{font-size:12.5px;line-height:1.55}#ontoh-analytics-banner p .analytics-note{margin-top:2px}#ontoh-analytics-banner .analytics-actions button{flex:1;min-width:0;min-height:44px;padding:0 12px}.ontoh-analytics-settings{white-space:nowrap;padding:12px 0!important}body:has(#mobileMenu.open) #ontoh-analytics-banner{display:none!important}}' +
       '@media(prefers-reduced-motion:reduce){#ontoh-analytics-banner{animation:none}#ontoh-analytics-banner button{transition:none}}';
@@ -166,8 +168,20 @@
       banner.hidden = false;
       banner.querySelector('button').focus();
     });
-    var footerContainer = document.querySelector('footer > div');
-    (footerContainer || document.body).appendChild(settings);
+    // 개인정보처리방침 · 이용약관 옆에 작게 배치 (푸터 링크 줄이 없으면 푸터 끝)
+    var privacyLink = document.querySelector('footer a[href$="privacy.html"]');
+    var linkRow = privacyLink && privacyLink.parentNode;
+    if (linkRow) {
+      var sep = document.createElement('span');
+      sep.className = 'ontoh-analytics-sep';
+      sep.setAttribute('aria-hidden', 'true');
+      sep.textContent = '|';
+      linkRow.appendChild(sep);
+      linkRow.appendChild(settings);
+    } else {
+      settings.style.marginTop = '12px';
+      (document.querySelector('footer > div') || document.body).appendChild(settings);
+    }
     document.addEventListener('click', function (event) {
       var link = event.target.closest('a[href]');
       if (!link) return;
