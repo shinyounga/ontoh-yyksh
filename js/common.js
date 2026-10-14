@@ -163,6 +163,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // ==================== 모바일 가로 스와이프 진행 바 (.m-swipe) ====================
   document.querySelectorAll('.m-swipe').forEach(function(track) {
+    // 가로로 넘기는 카드는 등장 애니메이션 없이 고정 (넘길 때 위로 튀는 현상 방지)
+    if (window.innerWidth < 640) { track.classList.remove('reveal'); Array.prototype.forEach.call(track.children, function(el) { el.classList.remove('reveal'); el.classList.add('visible'); }); }
     var bar = document.createElement('div');
     bar.className = 'm-swipe-bar';
     bar.setAttribute('aria-hidden', 'true');
@@ -251,6 +253,14 @@ document.addEventListener('DOMContentLoaded', function() {
         window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - (header ? header.offsetHeight : 0) - 16, behavior: 'smooth' });
       });
     });
+  });
+
+  // 가로 스크롤 탭: 누른 탭이 화면 안으로 오게
+  document.addEventListener('click', function(e) {
+    var t = e.target.closest('.ba-tab, .hc-tab');
+    if (!t || window.innerWidth >= 640) return;
+    var row = t.parentElement;
+    row.scrollTo({ left: t.offsetLeft - (row.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
   });
 
   // ==================== Tab UI ====================
