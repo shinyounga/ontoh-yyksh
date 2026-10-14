@@ -700,20 +700,31 @@
   </header>
 
   <!-- ==================== 모바일 메뉴 ==================== -->
-  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/97 backdrop-blur-3xl flex flex-col items-center justify-center gap-7 lg:hidden">
-    <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 bg-ink/[0.05] flex items-center justify-center" aria-label="메뉴 닫기">
-      <iconify-icon icon="solar:close-circle-linear" class="text-ink text-2xl"></iconify-icon>
-    </button>
-    <a href="about.html" class="menu-link text-2xl font-bold text-ink stagger-1" onclick="closeMobileMenu()">회사소개</a>
-    <div class="menu-link stagger-2 text-center">
-      <p class="text-body-sm text-accent font-bold tracking-[0.14em] uppercase mb-3">솔루션</p>
-      <a href="vision.html" class="block text-xl font-bold text-accent mb-2.5" onclick="closeMobileMenu()"><span class="font-brand">LOOKAT</span></a>
-      <a href="lookat-note.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()"><span class="font-brand">LOOKAT NOTE</span></a>
-      <a href="health.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()"><span class="font-brand">ONTOH CARE</span></a>
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white flex flex-col lg:hidden" role="dialog" aria-modal="true" aria-label="전체 메뉴">
+    <div class="mm-top shrink-0 flex items-center justify-between h-[92px] px-6 sm:px-10 border-b border-hair">
+      <a href="index.html" class="flex items-center"><img src="assets/logo/ontoh/ontoh-logo-color.svg" alt="ONTOH 홈" class="h-12"></a>
+      <button id="menuClose" class="w-11 h-11 bg-ink/[0.05] flex items-center justify-center" aria-label="메뉴 닫기">
+        <iconify-icon icon="solar:close-circle-linear" class="text-ink text-2xl"></iconify-icon>
+      </button>
     </div>
-    
-    <a href="contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
-    <a href="contact.html" class="menu-link btn btn-primary btn-lg stagger-5" onclick="closeMobileMenu()">문의하기 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
+    <nav class="mm-body flex-1 overflow-y-auto px-6 sm:px-10" aria-label="모바일 메뉴">
+      <div class="mm-group menu-link stagger-1">
+        <a href="about.html" class="mm-head">회사소개 <iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a>
+        <div class="mm-subs"><a href="about.html#mission" class="mm-sub">비전 · 미션</a><a href="about.html#history" class="mm-sub">연혁</a><a href="about.html#overview" class="mm-sub">회사개요</a><a href="about.html#location" class="mm-sub">오시는 길</a></div>
+      </div>
+      <div class="mm-group menu-link stagger-2">
+        <p class="mm-label">제품소개</p>
+        <a href="vision.html" class="mm-prod" aria-current="page"><span><b class="font-brand">LOOKAT</b><small>건설현장 Edge AI 안전관제</small></span><iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a><a href="lookat-note.html" class="mm-prod"><span><b class="font-brand">LOOKAT NOTE</b><small>사진·음성으로 쓰는 현장관리 앱</small></span><iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a><a href="health.html" class="mm-prod"><span><b class="font-brand">ONTOH CARE</b><small>작업자 디지털 보건관리</small></span><iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a>
+      </div>
+      <div class="mm-group menu-link stagger-3">
+        <p class="mm-label">기술 · 연구</p>
+        <div class="mm-subs"><a href="patents.html" class="mm-sub">특허 · 논문</a></div>
+      </div>
+    </nav>
+    <div class="mm-foot shrink-0 px-6 sm:px-10 pt-4 border-t border-hair bg-white">
+      <a href="contact.html" class="btn btn-primary btn-lg w-full justify-center">문의하기 <iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a>
+      <a href="mailto:contact@ontoh.co.kr" class="mm-mail">contact@ontoh.co.kr</a>
+    </div>
   </div>
 
   <!-- ==================== 얇은 브레드크럼 스트립 (한솔홈데코 스타일 · 균일 박스 그리드) ==================== -->
@@ -781,6 +792,16 @@
   </section>
 
   <main id="main" tabindex="-1">
+  <!-- ==================== 모바일 바로가기 칩 (640px 미만 · 상단 고정) ==================== -->
+  <nav class="m-jump sm:hidden" aria-label="이 페이지 바로가기">
+    <div class="m-jump-track">
+      <button type="button" data-jump="how">작동 방식</button>
+      <button type="button" data-jump="compare">법령 매칭</button>
+      <button type="button" data-jump="detect">감지 상황</button>
+      <button type="button" data-jump="lineup">구성 안내</button>
+      <button type="button" data-jump="faq">자주 묻는 질문</button>
+    </div>
+  </nav>
   <!-- ==================== 인트로 (컴팩트 + 메인 플랫폼 이미지) ==================== -->
   <section class="border-b border-hair overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
@@ -825,7 +846,7 @@
 
 
   <!-- ==================== 작동 방식 · 찾고 → 판단하고 → 움직이고 → 확인한다 ==================== -->
-  <section class="bg-band border-b border-hair">
+  <section id="how" class="bg-band border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="max-w-3xl mb-14 md:mb-16">
         <p class="reveal font-brand text-h2 md:text-h1 text-accent tracking-tight mb-4">AUTO PTZ</p>
@@ -834,7 +855,7 @@
         </h2>
       </div>
 
-      <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-14">
+      <ol class="m-swipe grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-14">
         <li class="reveal">
           <div class="aspect-[4/3] bg-white border border-hair overflow-hidden flex items-center justify-center">
             <img src="assets/lookat/flow/01-find-labeled.webp" alt="작업자 인식과 개구부 인식이 각각 표시된 현장 일러스트" class="w-full h-full object-contain" loading="lazy">
@@ -881,7 +902,7 @@
   </section>
 
   <!-- ==================== Before / After 비교 ==================== -->
-  <section class="border-b border-hair">
+  <section id="compare" class="border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="max-w-3xl mb-14 md:mb-16">
         <p class="reveal text-h3 md:text-h2 font-extrabold text-accent tracking-tight mb-4">생성형 AI 기반 법령 매칭</p>
@@ -945,7 +966,7 @@
 
 
   <!-- ==================== 현장 맞춤 감지 상황 6종 ==================== -->
-  <section class="bg-band border-b border-hair">
+  <section id="detect" class="bg-band border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="text-center mb-12 md:mb-14">
         <h2 class="reveal text-h2 md:text-hero font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
@@ -953,7 +974,7 @@
         </h2>
         <p class="reveal stagger-1 mt-5 text-body-md md:text-body-lg text-sub leading-[1.7]">다양한 상황을 감지하여 더 안전한 현장을 만듭니다.</p>
       </div>
-      <div class="reveal grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-hair border border-hair">
+      <div class="reveal m-grid2 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-hair border border-hair">
         <div class="bg-white p-8 md:p-10 text-center">
           <img src="assets/lookat/scenario/worker-protection.webp" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
           <h3 class="mt-5 text-h3 font-bold text-ink">작업자 보호</h3>
@@ -1604,7 +1625,7 @@
   <footer class="bg-[#E9ECEF] text-sub border-t border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 md:py-12">
       <!-- 상단: 로고 + 정책 링크 -->
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-hair/70">
+      <div class="ft-top flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-hair/70">
         <a href="index.html" class="flex items-center">
           <img src="assets/logo/ontoh/ontoh-logo-color.svg" alt="ONTOH" class="h-10">
         </a>
@@ -1616,7 +1637,7 @@
       </div>
 
       <!-- 회사 정보 · 가로 한 줄 (큐플레이스·시재건설 스타일 · 회색조 · | 구분자) -->
-      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-body-sm text-sub leading-relaxed">
+      <div class="ft-info flex flex-wrap items-center gap-x-4 gap-y-2 text-body-sm text-sub leading-relaxed">
         <span class="text-ink font-bold">주식회사 온토</span>
         <span class="text-sub/40" aria-hidden="true">|</span>
         <span><span class="font-semibold">대표이사</span> 김태건</span>
@@ -1629,7 +1650,7 @@
       </div>
 
       <!-- 카피라이트 -->
-      <p class="mt-6 pt-4 border-t border-hair/60 text-sub/85 text-body-sm">&copy; 2026 주식회사 온토. All rights reserved.</p>
+      <p class="ft-copy mt-6 pt-4 border-t border-hair/60 text-sub/85 text-body-sm">&copy; 2026 주식회사 온토. All rights reserved.</p>
     </div>
   </footer>
 

@@ -350,20 +350,31 @@
   <main id="main" tabindex="-1">
 
   <!-- ==================== 모바일 메뉴 ==================== -->
-  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/97 backdrop-blur-3xl flex flex-col items-center justify-center gap-7 lg:hidden">
-    <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 bg-ink/[0.05] flex items-center justify-center" aria-label="메뉴 닫기">
-      <iconify-icon icon="solar:close-circle-linear" class="text-ink text-2xl"></iconify-icon>
-    </button>
-    <a href="about.html" class="menu-link text-2xl font-bold text-ink stagger-1" onclick="closeMobileMenu()">회사소개</a>
-    <div class="menu-link stagger-2 text-center">
-      <p class="text-[13px] text-sub/85 font-bold tracking-[0.14em] uppercase mb-3">솔루션</p>
-      <a href="vision.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()"><span class="font-brand">LOOKAT</span></a>
-      <a href="lookat-note.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()"><span class="font-brand">LOOKAT NOTE</span></a>
-      <a href="health.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()"><span class="font-brand">ONTOH CARE</span></a>
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white flex flex-col lg:hidden" role="dialog" aria-modal="true" aria-label="전체 메뉴">
+    <div class="mm-top shrink-0 flex items-center justify-between h-[92px] px-6 sm:px-10 border-b border-hair">
+      <a href="index.html" class="flex items-center"><img src="assets/logo/ontoh/ontoh-logo-color.svg" alt="ONTOH 홈" class="h-12"></a>
+      <button id="menuClose" class="w-11 h-11 bg-ink/[0.05] flex items-center justify-center" aria-label="메뉴 닫기">
+        <iconify-icon icon="solar:close-circle-linear" class="text-ink text-2xl"></iconify-icon>
+      </button>
     </div>
-    <a href="patents.html" class="menu-link text-2xl font-bold text-accent stagger-3" onclick="closeMobileMenu()">기술·연구</a>
-    <a href="contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
-    <a href="contact.html" class="menu-link btn btn-primary btn-lg stagger-5" onclick="closeMobileMenu()">문의하기 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
+    <nav class="mm-body flex-1 overflow-y-auto px-6 sm:px-10" aria-label="모바일 메뉴">
+      <div class="mm-group menu-link stagger-1">
+        <a href="about.html" class="mm-head">회사소개 <iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a>
+        <div class="mm-subs"><a href="about.html#mission" class="mm-sub">비전 · 미션</a><a href="about.html#history" class="mm-sub">연혁</a><a href="about.html#overview" class="mm-sub">회사개요</a><a href="about.html#location" class="mm-sub">오시는 길</a></div>
+      </div>
+      <div class="mm-group menu-link stagger-2">
+        <p class="mm-label">제품소개</p>
+        <a href="vision.html" class="mm-prod"><span><b class="font-brand">LOOKAT</b><small>건설현장 Edge AI 안전관제</small></span><iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a><a href="lookat-note.html" class="mm-prod"><span><b class="font-brand">LOOKAT NOTE</b><small>사진·음성으로 쓰는 현장관리 앱</small></span><iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a><a href="health.html" class="mm-prod"><span><b class="font-brand">ONTOH CARE</b><small>작업자 디지털 보건관리</small></span><iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a>
+      </div>
+      <div class="mm-group menu-link stagger-3">
+        <p class="mm-label">기술 · 연구</p>
+        <div class="mm-subs"><a href="patents.html" class="mm-sub" aria-current="page">특허 · 논문</a></div>
+      </div>
+    </nav>
+    <div class="mm-foot shrink-0 px-6 sm:px-10 pt-4 border-t border-hair bg-white">
+      <a href="contact.html" class="btn btn-primary btn-lg w-full justify-center">문의하기 <iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a>
+      <a href="mailto:contact@ontoh.co.kr" class="mm-mail">contact@ontoh.co.kr</a>
+    </div>
   </div>
 
   <!-- ==================== 얇은 브레드크럼 스트립 (남색) ==================== -->
@@ -422,7 +433,7 @@
       </div>
 
       <!-- 핵심 기술 3축 -->
-      <div class="reveal mt-14 grid sm:grid-cols-3 gap-px bg-hair border border-hair">
+      <div class="reveal m-swipe m-swipe-boxed mt-14 grid sm:grid-cols-3 gap-px bg-hair border border-hair">
         <div class="bg-white p-8 flex flex-col">
           <div class="flex items-center justify-between mb-4">
             <span class="tag bg-accent/10 text-accent">검출</span>
@@ -458,7 +469,7 @@
         <h2 class="reveal text-[36px] md:text-[42px] font-bold tracking-tight text-ink mb-4" style="line-height:1.2; letter-spacing:-0.02em;">특허 보유 현황</h2>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="m-patlist grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- 특허 A -->
         <article class="reveal card !p-0 overflow-hidden">
           <div class="grid grid-cols-[180px_1fr] md:grid-cols-[220px_1fr] lg:grid-cols-1 lg:h-full">
@@ -522,7 +533,7 @@
         <p class="kicker mb-4 reveal">논문</p>
         <h2 class="reveal stagger-1 text-[36px] md:text-[42px] font-bold tracking-tight text-ink mb-4" style="line-height:1.2; letter-spacing:-0.02em;">국제 학술지·학회로 <span class="text-accent">검증한 기술</span>.</h2>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+      <div class="m-swipe grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5" data-swipe="narrow">
 
         <figure>
           <button type="button" class="doc-thumb aspect-[3/4]" data-lb-group="patents" data-lb="assets/tech/papers/journal-2026-dsdl-tiny-large-01.webp" data-lb-cap="Tiny object detection using DSDL · Automation in Construction Vol.187 (2026)">
@@ -772,7 +783,7 @@
   <footer class="bg-[#E9ECEF] text-sub border-t border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 md:py-12">
       <!-- 상단: 로고 + 정책 링크 -->
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-hair/70">
+      <div class="ft-top flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-hair/70">
         <a href="index.html" class="flex items-center">
           <img src="assets/logo/ontoh/ontoh-logo-color.svg" alt="ONTOH" class="h-10">
         </a>
@@ -784,7 +795,7 @@
       </div>
 
       <!-- 회사 정보 · 가로 한 줄 (큐플레이스·시재건설 스타일 · 회색조 · | 구분자) -->
-      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13.5px] text-sub leading-relaxed">
+      <div class="ft-info flex flex-wrap items-center gap-x-4 gap-y-2 text-[13.5px] text-sub leading-relaxed">
         <span class="text-ink font-bold">주식회사 온토</span>
         <span class="text-sub/40" aria-hidden="true">|</span>
         <span><span class="font-semibold">대표이사</span> 김태건</span>
@@ -797,7 +808,7 @@
       </div>
 
       <!-- 카피라이트 -->
-      <p class="mt-6 pt-4 border-t border-hair/60 text-sub/85 text-[13px]">&copy; 2026 주식회사 온토. All rights reserved.</p>
+      <p class="ft-copy mt-6 pt-4 border-t border-hair/60 text-sub/85 text-[13px]">&copy; 2026 주식회사 온토. All rights reserved.</p>
     </div>
   </footer>
 

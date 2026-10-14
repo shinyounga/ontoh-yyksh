@@ -127,6 +127,24 @@ html { font-size: 17px; }
   animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* 모바일 메뉴 · 그룹형 (회사소개 / 제품소개 / 기술·연구 + 하단 문의 고정) */
+.mm-body { overscroll-behavior: contain; }
+.mm-group { padding: 18px 0 14px; border-bottom: 1px solid #E5E7EB; }
+.mm-group:last-child { border-bottom: 0; }
+.mm-label { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; color: #555555; margin-bottom: 6px; }
+.mm-head { display: flex; align-items: center; justify-content: space-between; min-height: 48px; font-size: 22px; font-weight: 700; color: #0A2440; letter-spacing: -0.02em; }
+.mm-head iconify-icon, .mm-prod iconify-icon { color: #555555; font-size: 18px; flex-shrink: 0; }
+.mm-subs { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; }
+.mm-sub { display: flex; align-items: center; min-height: 44px; font-size: 17px; font-weight: 600; color: #212121; }
+.mm-prod { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; padding: 8px 0; }
+.mm-prod + .mm-prod { border-top: 1px solid #E5E7EB; }
+.mm-prod b { display: block; font-size: 19px; color: #0A2440; line-height: 1.2; }
+.mm-prod small { display: block; margin-top: 4px; font-size: 13px; font-weight: 500; color: #555555; }
+.mm-foot { padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
+.mm-mail { display: flex; align-items: center; justify-content: center; min-height: 44px; font-size: 13px; color: #555555; }
+.mobile-menu [aria-current="page"], .mobile-menu [aria-current="page"] b { color: #0169a9; }
+.mobile-menu a:active { background: #F5F6F8; }
+
 /* ==================== Scrollbar ==================== */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #eef2f7; }
@@ -257,4 +275,151 @@ nav.gnb .nav-item:not(:first-child) .nav-panel::before { height: 182px; }
 @media (max-width: 640px) {
   .ba-label { font-size: 12px !important; }
   .rc-no { font-size: 12px !important; }
+}
+
+/* 360px 대 푸터 링크 줄 넘침 방지 (분석 설정 버튼 nowrap 이후) */
+@media (max-width: 640px) {
+  footer div:has(> .ontoh-analytics-settings) { flex-wrap: wrap; column-gap: 16px; row-gap: 0; }
+}
+
+/* 브레드크럼 스트립 모바일 보정 (솔루션 3페이지와 동일 규칙을 공용화) */
+@media (max-width: 640px) {
+  .bc-cell { font-size: 14px; }
+  .bc-cell .bc-caret { display: none; }
+  .bc-cell.bc-menu { min-width: 0; padding: 0 10px; gap: 0; font-size: 13px; }
+  .bc-cell.bc-home { width: 44px; }
+  .bc-item { min-width: 0; }
+  .bc-row { min-width: 0; flex: 1 1 auto; }
+  .bc-strip-tools { flex-shrink: 0; gap: 0 !important; }
+  .bc-strip-tools button { min-width: 40px; justify-content: center; }
+}
+
+/* 모바일 탭 전환 (data-mtabs · 640px 미만에서만 동작, JS 없으면 전부 노출) */
+.m-tabs { display: flex; border: 1px solid #E5E7EB; background: #ffffff; margin-bottom: 16px; }
+.m-tabs[hidden] { display: none; }
+.m-tabs button { flex: 1 1 0; min-width: 0; min-height: 48px; padding: 0 6px; font-size: 13px; font-weight: 700; color: #555555; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .3s cubic-bezier(0.16,1,0.3,1), border-color .3s cubic-bezier(0.16,1,0.3,1); }
+.m-tabs button + button { border-left: 1px solid #E5E7EB; }
+.m-tabs button[aria-selected="true"] { color: #0A2440; border-bottom-color: #0169a9; background: #F5F6F8; }
+.note-bento { display: none !important; }
+@media (max-width: 639px) {
+  .mtabs-on [data-mpanel]:not(.is-active) { display: none !important; }
+  .mtabs-on [data-mpanel].is-active { margin-top: 0; }
+  .mtabs-on .note-bento.is-active { display: flex !important; }
+  .mtabs-on .note-strip { display: none !important; }
+}
+
+/* 모바일 가로 스와이프 (.m-swipe · 640px 미만에서만, 이상은 기존 그리드) */
+.m-swipe-bar { display: none; }
+@media (max-width: 639px) {
+  .m-swipe { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px !important;
+    margin-inline: -24px; padding: 0 24px 2px; scroll-padding-inline: 24px; scrollbar-width: none;
+    background: none !important; border: 0 !important; -webkit-overflow-scrolling: touch; }
+  .m-swipe::-webkit-scrollbar { display: none; }
+  .m-swipe > * { flex: 0 0 82%; min-width: 0; scroll-snap-align: start; }
+  /* 스와이프 안의 카드는 등장 애니메이션 없이 제자리 표시 (넘길 때 위로 튀는 현상 방지) */
+  .m-swipe > .reveal, .m-swipe.reveal > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .m-swipe.reveal { transform: none !important; }
+  /* 섹션 머리의 '자세히' 링크는 오른쪽 끝 정렬 */
+  .m-more { align-self: flex-end; }
+  .m-swipe[data-swipe="narrow"] > * { flex-basis: 44%; }
+  .m-swipe[data-swipe="kpi"] > * { flex-basis: 62%; }
+  .m-swipe-boxed > * { border: 1px solid #E5E7EB; }
+  .m-swipe-bar + #partners > .grid { margin-top: 20px; border-top-width: 1px !important; }
+  .m-swipe-bar { display: block; position: relative; height: 2px; margin-top: 16px; background: #E5E7EB; }
+  .m-swipe-bar > i { position: absolute; left: 0; top: 0; bottom: 0; background: #0169a9; transition: width .3s cubic-bezier(0.16,1,0.3,1); }
+}
+
+/* 모바일 바로가기 칩 (.m-jump) · 감지 상황 2열 (.m-grid2) */
+.m-jump { position: sticky; top: 92px; z-index: 30; background: #ffffff; border-bottom: 1px solid #E5E7EB; }
+.m-jump-track { display: flex; gap: 8px; overflow-x: auto; padding: 8px 24px; scrollbar-width: none; }
+.m-jump-track::-webkit-scrollbar { display: none; }
+.m-jump button { flex-shrink: 0; min-height: 40px; padding: 0 14px; border: 1px solid #E5E7EB; background: #ffffff; font-size: 14px; font-weight: 600; color: #555555; white-space: nowrap;
+  transition: color .3s cubic-bezier(0.16,1,0.3,1), border-color .3s cubic-bezier(0.16,1,0.3,1), background-color .3s cubic-bezier(0.16,1,0.3,1); }
+.m-jump button[aria-current="true"] { color: #ffffff; background: #0A2440; border-color: #0A2440; }
+@media (max-width: 639px) {
+  .m-grid2 { grid-template-columns: 1fr 1fr !important; }
+  .m-grid2 > div { padding: 22px 12px !important; }
+  .m-grid2 img { width: 52px !important; height: 52px !important; }
+  .m-grid2 h3 { margin-top: 12px !important; font-size: 17px !important; }
+  .m-grid2 p { font-size: 13px !important; }
+}
+
+/* ==================== 모바일 타이포 · 여백 정리 (640px 미만) ==================== */
+@media (max-width: 639px) {
+  /* 한글은 어절 단위로 줄바꿈, 제목은 줄 길이 균형 */
+  body { word-break: keep-all; overflow-wrap: break-word; }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li, dd, figcaption { text-wrap: pretty; }
+  /* 본문 행간을 조금 좁혀 문단이 덜 길어 보이게 */
+  p[class*="leading-[1.7"], p[class*="leading-[1.8"], li[class*="leading-[1.7"] { line-height: 1.65; }
+  /* 섹션 위아래 여백 축소 (80px -> 56px 등) */
+  section > div.py-20 { padding-top: 56px; padding-bottom: 56px; }
+  section > div.py-16 { padding-top: 48px; padding-bottom: 48px; }
+  section > div.py-14 { padding-top: 44px; padding-bottom: 44px; }
+  section .mb-14 { margin-bottom: 36px; }
+  section .mb-12 { margin-bottom: 32px; }
+  section .mb-10 { margin-bottom: 28px; }
+  section .mt-14 { margin-top: 36px; }
+  section .mt-12 { margin-top: 32px; }
+}
+
+/* ==================== 모바일 푸터 레이아웃 (640px 미만) ==================== */
+@media (max-width: 639px) {
+  footer .ft-top { gap: 14px; padding-bottom: 18px; margin-bottom: 18px; }
+  footer .ft-top img { height: 32px; }
+  footer .ft-top > div { flex-wrap: wrap; gap: 0 !important; font-size: 13px; }
+  footer .ft-top > div > span { display: none; }
+  footer .ft-top > div > a, footer .ft-top > div > button { display: inline-flex; align-items: center; min-height: 40px; padding: 0 !important; margin-right: 18px; white-space: nowrap; }
+  footer .ft-info { display: grid !important; gap: 6px !important; font-size: 13px; line-height: 1.6; }
+  footer .ft-info > span[aria-hidden="true"] { display: none; }
+  footer .ft-info > span:first-child { font-size: 15px; margin-bottom: 4px; }
+  footer .ft-info > span:not(:first-child):not([aria-hidden]) { display: grid; grid-template-columns: 88px 1fr; column-gap: 8px; }
+  footer .ft-info > span > span.font-semibold { color: #0A2440; }
+  .m-tabs { margin-top: 8px; }
+  footer .ft-copy { margin-top: 18px !important; padding-top: 14px !important; font-size: 12px; }
+}
+
+/* 모바일 목차 (data-mtoc · 640px 미만) */
+.m-toc { display: none; }
+@media (max-width: 639px) {
+  .m-toc { display: block; margin: 0 0 32px; border: 1px solid #E5E7EB; background: #ffffff; }
+  .m-toc summary { display: flex; align-items: center; justify-content: space-between; min-height: 52px; padding: 0 16px; font-size: 15px; font-weight: 700; color: #0A2440; cursor: pointer; list-style: none; }
+  .m-toc summary::-webkit-details-marker { display: none; }
+  .m-toc summary iconify-icon { color: #555555; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
+  .m-toc[open] summary iconify-icon { transform: rotate(180deg); }
+  .m-toc ol { margin: 0 !important; padding: 0 16px 8px !important; list-style: none !important; border-top: 1px solid #E5E7EB; }
+  .m-toc li { margin: 0 !important; padding: 0 !important; }
+  .m-toc li::before { display: none !important; }
+  .m-toc a { display: flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 500 !important; color: #212121 !important; text-decoration: none !important; border-bottom: 1px solid #F5F6F8; }
+  [data-mtoc] h2 { scroll-margin-top: 108px; }
+}
+
+/* ==================== ONTOH CARE · 특허 모바일 보정 (640px 미만) ==================== */
+@media (max-width: 639px) {
+  /* 인트로 손 목업: 가운데가 아니라 오른쪽으로, 아래 섹션을 침범하지 않게 */
+  .care-mock { display: flex; justify-content: flex-end; margin-bottom: -56px !important; }
+  .care-mock img { width: 82% !important; }
+  /* 주요 기능 캐러셀: 한 화면에 한 장이 들어오도록 */
+  .hc-bar { flex-wrap: nowrap; gap: 0; padding-bottom: 12px; margin-bottom: 16px; }
+  .hc-tabs { flex-wrap: nowrap; overflow-x: auto; gap: 6px; margin-inline: -24px; padding-inline: 24px; scrollbar-width: none; flex: 1 1 auto; }
+  .hc-tabs::-webkit-scrollbar { display: none; }
+  .hc-tab { flex-shrink: 0; padding: 0 12px; min-height: 40px; font-size: 14px; white-space: nowrap; }
+  .hc-ctrl { display: none; }
+  .hc-slide .grid { gap: 16px !important; }
+  .hc-slide img { max-height: 44vh; width: auto !important; margin-inline: auto; display: block; }
+  .hc-slide p.stat-num[aria-hidden="true"] { display: none; }
+  .hc-slide h3 { font-size: 22px !important; margin-bottom: 10px !important; }
+  .hc-slide ul.space-y-4 { font-size: 16px !important; }
+  .hc-slide ul.space-y-4 > li + li { margin-top: 6px !important; }
+  .hc-slide .mt-7.pt-6 { margin-top: 14px !important; padding-top: 12px !important; }
+  /* 특허 3건: 한 화면에 모두 보이는 간결한 목록 */
+  .m-patlist { gap: 12px !important; }
+  .m-patlist > article > div { grid-template-columns: 92px 1fr !important; }
+  .m-patlist .doc-thumb { aspect-ratio: 3 / 4; align-self: start; }
+  .m-patlist .p-6 { padding: 14px 16px !important; }
+  .m-patlist h3 { font-size: 16px !important; line-height: 1.45 !important; margin-bottom: 6px !important; }
+  .m-patlist dl { font-size: 13px; }
+  .m-patlist dl > div { gap: 8px; }
+  .m-patlist dt { width: auto !important; }
+  .m-patlist article a[href^="http"] { margin-top: 8px !important; min-height: 32px; }
 }
