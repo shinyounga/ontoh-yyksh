@@ -300,13 +300,12 @@ nav.gnb .nav-item:not(:first-child) .nav-panel::before { height: 182px; }
 .m-tabs button { flex: 1 1 0; min-width: 0; min-height: 48px; padding: 0 6px; font-size: 13px; font-weight: 700; color: #555555; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .3s cubic-bezier(0.16,1,0.3,1), border-color .3s cubic-bezier(0.16,1,0.3,1); }
 .m-tabs button + button { border-left: 1px solid #E5E7EB; }
 .m-tabs button[aria-selected="true"] { color: #0A2440; border-bottom-color: #0169a9; background: #F5F6F8; }
-.note-mob-art { display: none; }
+.note-bento { display: none !important; }
 @media (max-width: 639px) {
   .mtabs-on [data-mpanel]:not(.is-active) { display: none !important; }
   .mtabs-on [data-mpanel].is-active { margin-top: 0; }
-  .mtabs-on .note-mob-art { display: block; width: 100%; height: auto; margin-top: 8px; order: 3; }
-  .mtabs-on [data-mpanel="note"] { align-items: center; text-align: center; padding: 40px 24px 0; gap: 14px; }
-  .mtabs-on [data-mpanel="note"] > span { order: 2; }
+  .mtabs-on .note-bento.is-active { display: flex !important; }
+  .mtabs-on .note-strip { display: none !important; }
 }
 
 /* 모바일 가로 스와이프 (.m-swipe · 640px 미만에서만, 이상은 기존 그리드) */
@@ -317,15 +316,15 @@ nav.gnb .nav-item:not(:first-child) .nav-panel::before { height: 182px; }
     background: none !important; border: 0 !important; -webkit-overflow-scrolling: touch; }
   .m-swipe::-webkit-scrollbar { display: none; }
   .m-swipe > * { flex: 0 0 82%; min-width: 0; scroll-snap-align: start; }
+  /* 스와이프 안의 카드는 등장 애니메이션 없이 제자리 표시 (넘길 때 위로 튀는 현상 방지) */
+  .m-swipe > .reveal, .m-swipe.reveal > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .m-swipe.reveal { transform: none !important; }
+  /* 섹션 머리의 '자세히' 링크는 오른쪽 끝 정렬 */
+  .m-more { align-self: flex-end; }
   .m-swipe[data-swipe="narrow"] > * { flex-basis: 44%; }
   .m-swipe[data-swipe="kpi"] > * { flex-basis: 62%; }
   .m-swipe-boxed > * { border: 1px solid #E5E7EB; }
   .m-swipe-bar + #partners > .grid { margin-top: 20px; border-top-width: 1px !important; }
-  .m-swipe-patent > article > div { grid-template-columns: 112px 1fr; }
-  .m-swipe-patent > article .p-6 { padding: 18px 16px; }
-  .m-swipe-patent > article h3 { font-size: 17px; }
-  .m-swipe-patent dl > div { flex-direction: column; gap: 0; }
-  .m-swipe-patent dt { width: auto; }
   .m-swipe-bar { display: block; position: relative; height: 2px; margin-top: 16px; background: #E5E7EB; }
   .m-swipe-bar > i { position: absolute; left: 0; top: 0; bottom: 0; background: #0169a9; transition: width .3s cubic-bezier(0.16,1,0.3,1); }
 }
@@ -378,4 +377,49 @@ nav.gnb .nav-item:not(:first-child) .nav-panel::before { height: 182px; }
   footer .ft-info > span > span.font-semibold { color: #0A2440; }
   .m-tabs { margin-top: 8px; }
   footer .ft-copy { margin-top: 18px !important; padding-top: 14px !important; font-size: 12px; }
+}
+
+/* 모바일 목차 (data-mtoc · 640px 미만) */
+.m-toc { display: none; }
+@media (max-width: 639px) {
+  .m-toc { display: block; margin: 0 0 32px; border: 1px solid #E5E7EB; background: #ffffff; }
+  .m-toc summary { display: flex; align-items: center; justify-content: space-between; min-height: 52px; padding: 0 16px; font-size: 15px; font-weight: 700; color: #0A2440; cursor: pointer; list-style: none; }
+  .m-toc summary::-webkit-details-marker { display: none; }
+  .m-toc summary iconify-icon { color: #555555; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
+  .m-toc[open] summary iconify-icon { transform: rotate(180deg); }
+  .m-toc ol { margin: 0 !important; padding: 0 16px 8px !important; list-style: none !important; border-top: 1px solid #E5E7EB; }
+  .m-toc li { margin: 0 !important; padding: 0 !important; }
+  .m-toc li::before { display: none !important; }
+  .m-toc a { display: flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 500 !important; color: #212121 !important; text-decoration: none !important; border-bottom: 1px solid #F5F6F8; }
+  [data-mtoc] h2 { scroll-margin-top: 108px; }
+}
+
+/* ==================== ONTOH CARE · 특허 모바일 보정 (640px 미만) ==================== */
+@media (max-width: 639px) {
+  /* 인트로 손 목업: 가운데가 아니라 오른쪽으로, 아래 섹션을 침범하지 않게 */
+  .care-mock { display: flex; justify-content: flex-end; margin-bottom: -56px !important; }
+  .care-mock img { width: 82% !important; }
+  /* 주요 기능 캐러셀: 한 화면에 한 장이 들어오도록 */
+  .hc-bar { flex-wrap: nowrap; gap: 0; padding-bottom: 12px; margin-bottom: 16px; }
+  .hc-tabs { flex-wrap: nowrap; overflow-x: auto; gap: 6px; margin-inline: -24px; padding-inline: 24px; scrollbar-width: none; flex: 1 1 auto; }
+  .hc-tabs::-webkit-scrollbar { display: none; }
+  .hc-tab { flex-shrink: 0; padding: 0 12px; min-height: 40px; font-size: 14px; white-space: nowrap; }
+  .hc-ctrl { display: none; }
+  .hc-slide .grid { gap: 16px !important; }
+  .hc-slide img { max-height: 44vh; width: auto !important; margin-inline: auto; display: block; }
+  .hc-slide p.stat-num[aria-hidden="true"] { display: none; }
+  .hc-slide h3 { font-size: 22px !important; margin-bottom: 10px !important; }
+  .hc-slide ul.space-y-4 { font-size: 16px !important; }
+  .hc-slide ul.space-y-4 > li + li { margin-top: 6px !important; }
+  .hc-slide .mt-7.pt-6 { margin-top: 14px !important; padding-top: 12px !important; }
+  /* 특허 3건: 한 화면에 모두 보이는 간결한 목록 */
+  .m-patlist { gap: 12px !important; }
+  .m-patlist > article > div { grid-template-columns: 92px 1fr !important; }
+  .m-patlist .doc-thumb { aspect-ratio: 3 / 4; align-self: start; }
+  .m-patlist .p-6 { padding: 14px 16px !important; }
+  .m-patlist h3 { font-size: 16px !important; line-height: 1.45 !important; margin-bottom: 6px !important; }
+  .m-patlist dl { font-size: 13px; }
+  .m-patlist dl > div { gap: 8px; }
+  .m-patlist dt { width: auto !important; }
+  .m-patlist article a[href^="http"] { margin-top: 8px !important; min-height: 32px; }
 }

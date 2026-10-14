@@ -227,6 +227,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // ==================== 모바일 목차 (data-mtoc) ====================
+  document.querySelectorAll('[data-mtoc]').forEach(function(box, bi) {
+    var heads = box.querySelectorAll('h2');
+    if (heads.length < 3) return;
+    var toc = document.createElement('details');
+    toc.className = 'm-toc';
+    var html = '<summary>목차 <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon></summary><ol>';
+    heads.forEach(function(h, i) {
+      if (!h.id) h.id = 'sec-' + (bi + 1) + '-' + (i + 1);
+      var label = h.textContent.replace(/\s+/g, ' ').trim().replace(/^(제\d+조)\s*/, '$1 ');
+      html += '<li><a href="#' + h.id + '">' + label.replace(/</g, '&lt;') + '</a></li>';
+    });
+    toc.innerHTML = html + '</ol>';
+    box.insertBefore(toc, heads[0].closest('[data-mtoc] > *') || heads[0]);
+    toc.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var t = document.getElementById(a.getAttribute('href').slice(1));
+        if (!t) return;
+        e.preventDefault();
+        toc.open = false;
+        var header = document.querySelector('header');
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - (header ? header.offsetHeight : 0) - 16, behavior: 'smooth' });
+      });
+    });
+  });
+
   // ==================== Tab UI ====================
   const tabBtns = document.querySelectorAll('.tab-btn');
   if (tabBtns.length > 0) {
