@@ -178,6 +178,40 @@ document.addEventListener('DOMContentLoaded', function() {
     update();
   });
 
+  // ==================== 모바일 바로가기 칩 (.m-jump) ====================
+  document.querySelectorAll('.m-jump').forEach(function(bar) {
+    var btns = bar.querySelectorAll('[data-jump]');
+    var header = document.querySelector('header');
+    function offset() { return (header ? header.offsetHeight : 0) + bar.offsetHeight + 8; }
+    function mark(id) {
+      btns.forEach(function(b) {
+        var on = b.getAttribute('data-jump') === id;
+        b.setAttribute('aria-current', on ? 'true' : 'false');
+        if (on && b.scrollIntoView) bar.firstElementChild.scrollTo({ left: b.offsetLeft - 24, behavior: 'smooth' });
+      });
+    }
+    btns.forEach(function(b) {
+      b.addEventListener('click', function() {
+        var t = document.getElementById(b.getAttribute('data-jump'));
+        if (!t) return;
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - offset() + 1, behavior: 'smooth' });
+        // 지연 로딩 이미지로 위치가 밀리면 한 번 보정
+        setTimeout(function() { var d = t.getBoundingClientRect().top - offset(); if (Math.abs(d) > 6) window.scrollBy(0, d + 1); }, 900);
+      });
+    });
+    var current = null;
+    function onScroll() {
+      var y = offset() + 4, found = null;
+      btns.forEach(function(b) {
+        var t = document.getElementById(b.getAttribute('data-jump'));
+        if (t && t.getBoundingClientRect().top <= y) found = b.getAttribute('data-jump');
+      });
+      if (found !== current) { current = found; mark(found); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  });
+
   // ==================== Smooth Scroll ====================
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {

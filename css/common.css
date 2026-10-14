@@ -327,3 +327,18 @@ nav.gnb .nav-item:not(:first-child) .nav-panel::before { height: 182px; }
   .m-swipe-bar { display: block; position: relative; height: 2px; margin-top: 16px; background: #E5E7EB; }
   .m-swipe-bar > i { position: absolute; left: 0; top: 0; bottom: 0; background: #0169a9; transition: width .3s cubic-bezier(0.16,1,0.3,1); }
 }
+
+/* 모바일 바로가기 칩 (.m-jump) · 감지 상황 2열 (.m-grid2) */
+.m-jump { position: sticky; top: 92px; z-index: 30; background: #ffffff; border-bottom: 1px solid #E5E7EB; }
+.m-jump-track { display: flex; gap: 8px; overflow-x: auto; padding: 8px 24px; scrollbar-width: none; }
+.m-jump-track::-webkit-scrollbar { display: none; }
+.m-jump button { flex-shrink: 0; min-height: 40px; padding: 0 14px; border: 1px solid #E5E7EB; background: #ffffff; font-size: 14px; font-weight: 600; color: #555555; white-space: nowrap;
+  transition: color .3s cubic-bezier(0.16,1,0.3,1), border-color .3s cubic-bezier(0.16,1,0.3,1), background-color .3s cubic-bezier(0.16,1,0.3,1); }
+.m-jump button[aria-current="true"] { color: #ffffff; background: #0A2440; border-color: #0A2440; }
+@media (max-width: 639px) {
+  .m-grid2 { grid-template-columns: 1fr 1fr !important; }
+  .m-grid2 > div { padding: 22px 12px !important; }
+  .m-grid2 img { width: 52px !important; height: 52px !important; }
+  .m-grid2 h3 { margin-top: 12px !important; font-size: 17px !important; }
+  .m-grid2 p { font-size: 13px !important; }
+}
