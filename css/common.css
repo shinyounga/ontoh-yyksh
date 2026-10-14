@@ -252,3 +252,9 @@ nav.gnb .nav-item:not(:first-child) .nav-panel::before { height: 182px; }
 .hc-slide.is-active { animation: hcIn .55s cubic-bezier(0.16,1,0.3,1); }
 @keyframes hcIn { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .hc-slide.is-active { animation: none; } }
+
+/* 모바일 · 작은 라벨 글자 크기 보정 (BEFORE/AFTER · 위험 유형 번호) */
+@media (max-width: 640px) {
+  .ba-label { font-size: 12px !important; }
+  .rc-no { font-size: 12px !important; }
+}
