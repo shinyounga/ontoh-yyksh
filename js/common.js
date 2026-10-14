@@ -197,8 +197,14 @@ document.addEventListener('DOMContentLoaded', function() {
         var t = document.getElementById(b.getAttribute('data-jump'));
         if (!t) return;
         window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - offset() + 1, behavior: 'smooth' });
-        // 지연 로딩 이미지로 위치가 밀리면 한 번 보정
-        setTimeout(function() { var d = t.getBoundingClientRect().top - offset(); if (Math.abs(d) > 6) window.scrollBy(0, d + 1); }, 900);
+        // 스크롤이 멈춘 뒤 지연 로딩 이미지 등으로 위치가 밀렸으면 보정
+        var last = -1, tries = 0;
+        setTimeout(function wait() {
+          var y = window.pageYOffset;
+          if (y !== last && ++tries < 40) { last = y; return setTimeout(wait, 100); }
+          var d = t.getBoundingClientRect().top - offset();
+          if (Math.abs(d) > 6) window.scrollBy({ top: d + 1, behavior: 'auto' });
+        }, 200);
       });
     });
     var current = null;
