@@ -308,3 +308,22 @@ nav.gnb .nav-item:not(:first-child) .nav-panel::before { height: 182px; }
   .mtabs-on [data-mpanel="note"] { align-items: center; text-align: center; padding: 40px 24px 0; gap: 14px; }
   .mtabs-on [data-mpanel="note"] > span { order: 2; }
 }
+
+/* 모바일 가로 스와이프 (.m-swipe · 640px 미만에서만, 이상은 기존 그리드) */
+.m-swipe-bar { display: none; }
+@media (max-width: 639px) {
+  .m-swipe { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px !important;
+    margin-inline: -24px; padding: 0 24px 2px; scroll-padding-inline: 24px; scrollbar-width: none;
+    background: none !important; border: 0 !important; -webkit-overflow-scrolling: touch; }
+  .m-swipe::-webkit-scrollbar { display: none; }
+  .m-swipe > * { flex: 0 0 82%; min-width: 0; scroll-snap-align: start; }
+  .m-swipe[data-swipe="narrow"] > * { flex-basis: 44%; }
+  .m-swipe-boxed > * { border: 1px solid #E5E7EB; }
+  .m-swipe-patent > article > div { grid-template-columns: 112px 1fr; }
+  .m-swipe-patent > article .p-6 { padding: 18px 16px; }
+  .m-swipe-patent > article h3 { font-size: 17px; }
+  .m-swipe-patent dl > div { flex-direction: column; gap: 0; }
+  .m-swipe-patent dt { width: auto; }
+  .m-swipe-bar { display: block; position: relative; height: 2px; margin-top: 16px; background: #E5E7EB; }
+  .m-swipe-bar > i { position: absolute; left: 0; top: 0; bottom: 0; background: #0169a9; transition: width .3s cubic-bezier(0.16,1,0.3,1); }
+}

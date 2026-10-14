@@ -161,6 +161,23 @@ document.addEventListener('DOMContentLoaded', function() {
     show(keys[0]);
   });
 
+  // ==================== 모바일 가로 스와이프 진행 바 (.m-swipe) ====================
+  document.querySelectorAll('.m-swipe').forEach(function(track) {
+    var bar = document.createElement('div');
+    bar.className = 'm-swipe-bar';
+    bar.setAttribute('aria-hidden', 'true');
+    bar.innerHTML = '<i></i>';
+    track.parentNode.insertBefore(bar, track.nextSibling);
+    var fill = bar.firstChild;
+    function update() {
+      var max = track.scrollWidth;
+      fill.style.width = (max > 0 ? Math.min(100, (track.scrollLeft + track.clientWidth) / max * 100) : 100) + '%';
+    }
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+
   // ==================== Smooth Scroll ====================
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
