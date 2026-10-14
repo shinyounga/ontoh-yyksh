@@ -498,7 +498,7 @@
   </section>
 
   <!-- ==================== 사업영역 (Bento) ==================== -->
-  <section class="bg-band border-b border-hair">
+  <section class="bg-band border-b border-hair" data-mtabs>
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12">
         <div>
@@ -506,8 +506,13 @@
         </div>
         <p class="reveal stagger-2 text-[18px] text-sub leading-[1.7] max-w-md">현장을 살피고 AI로 판단하는 <span class="font-brand">LOOKAT</span>과,<br class="hidden md:block"> 데이터 기반 작업자 보건관리 솔루션을 함께 제공합니다.</p>
       </div>
+      <div class="m-tabs sm:hidden" role="tablist" aria-label="제품 선택" hidden>
+        <button type="button" role="tab" data-mtab="lookat" aria-selected="true"><span class="font-brand">LOOKAT</span></button>
+        <button type="button" role="tab" data-mtab="care" aria-selected="false"><span class="font-brand">ONTOH CARE</span></button>
+        <button type="button" role="tab" data-mtab="note" aria-selected="false"><span class="font-brand">LOOKAT NOTE</span></button>
+      </div>
       <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-        <a href="vision.html" class="bento reveal group">
+        <a href="vision.html" class="bento reveal group" data-mpanel="lookat">
           <div class="bento-head">
             <p class="bento-name"><span class="font-brand">LOOKAT</span></p>
             <p class="bento-kind">건설현장 Edge AI 안전관제</p>
@@ -518,7 +523,7 @@
             <img src="assets/vision/dashboard2.webp" alt="LOOKAT 자율 관제 대시보드 화면" loading="lazy">
           </div>
         </a>
-        <a href="health.html" class="bento reveal stagger-1 group">
+        <a href="health.html" class="bento reveal stagger-1 group" data-mpanel="care">
           <div class="bento-head">
             <p class="bento-name"><span class="font-brand">ONTOH CARE</span></p>
             <p class="bento-kind">작업자 디지털 보건관리</p>
@@ -530,9 +535,10 @@
           </div>
         </a>
       </div>
-      <a href="lookat-note.html" class="reveal mt-4 md:mt-5 group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 bg-white border border-hair px-6 md:px-8 py-5 hover:border-ink/30 transition-colors">
+      <a href="lookat-note.html" data-mpanel="note" class="reveal mt-4 md:mt-5 group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 bg-white border border-hair px-6 md:px-8 py-5 hover:border-ink/30 transition-colors">
         <img src="assets/logo/lookat/lookat-symbol.webp" alt="" aria-hidden="true" class="w-10 h-10 shrink-0">
         <p class="flex-1 text-[17px] md:text-[18px] text-sub leading-[1.6]"><b class="text-ink"><span class="font-brand">LOOKAT NOTE</span></b> <span class="hidden sm:inline">·</span> 사진과 음성만으로 작업일지 · 점검보고서를 완성하는 현장관리 앱</p>
+        <img src="assets/lookat/note/01-photo-card.webp" alt="LOOKAT NOTE 현장사진 촬영 화면" loading="lazy" class="note-mob-art">
         <span class="inline-flex items-center gap-1.5 text-[15px] font-bold text-accent group-hover:gap-2.5 transition-all shrink-0">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
       </a>
     </div>

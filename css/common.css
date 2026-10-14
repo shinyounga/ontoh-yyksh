@@ -293,3 +293,18 @@ nav.gnb .nav-item:not(:first-child) .nav-panel::before { height: 182px; }
   .bc-strip-tools { flex-shrink: 0; gap: 0 !important; }
   .bc-strip-tools button { min-width: 40px; justify-content: center; }
 }
+
+/* 모바일 탭 전환 (data-mtabs · 640px 미만에서만 동작, JS 없으면 전부 노출) */
+.m-tabs { display: flex; border: 1px solid #E5E7EB; background: #ffffff; margin-bottom: 16px; }
+.m-tabs[hidden] { display: none; }
+.m-tabs button { flex: 1 1 0; min-width: 0; min-height: 48px; padding: 0 6px; font-size: 13px; font-weight: 700; color: #555555; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .3s cubic-bezier(0.16,1,0.3,1), border-color .3s cubic-bezier(0.16,1,0.3,1); }
+.m-tabs button + button { border-left: 1px solid #E5E7EB; }
+.m-tabs button[aria-selected="true"] { color: #0A2440; border-bottom-color: #0169a9; background: #F5F6F8; }
+.note-mob-art { display: none; }
+@media (max-width: 639px) {
+  .mtabs-on [data-mpanel]:not(.is-active) { display: none !important; }
+  .mtabs-on [data-mpanel].is-active { margin-top: 0; }
+  .mtabs-on .note-mob-art { display: block; width: 100%; height: auto; margin-top: 8px; order: 3; }
+  .mtabs-on [data-mpanel="note"] { align-items: center; text-align: center; padding: 40px 24px 0; gap: 14px; }
+  .mtabs-on [data-mpanel="note"] > span { order: 2; }
+}

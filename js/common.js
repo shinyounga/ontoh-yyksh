@@ -130,6 +130,37 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('open')) closeMobileMenu();
   });
 
+  // ==================== 모바일 탭 전환 (data-mtabs) ====================
+  document.querySelectorAll('[data-mtabs]').forEach(function(box) {
+    var tabs = box.querySelectorAll('[data-mtab]');
+    var panels = box.querySelectorAll('[data-mpanel]');
+    if (!tabs.length || !panels.length) return;
+    var keys = Array.prototype.map.call(tabs, function(t) { return t.getAttribute('data-mtab'); });
+    function show(key) {
+      tabs.forEach(function(t) { t.setAttribute('aria-selected', t.getAttribute('data-mtab') === key ? 'true' : 'false'); });
+      panels.forEach(function(p) {
+        var on = p.getAttribute('data-mpanel') === key;
+        p.classList.toggle('is-active', on);
+        if (on) p.classList.add('visible');
+      });
+    }
+    tabs.forEach(function(t) { t.addEventListener('click', function() { show(t.getAttribute('data-mtab')); }); });
+    // 좌우 스와이프로 다음/이전 탭
+    var x0 = null, y0 = null;
+    box.addEventListener('touchstart', function(e) { if (e.target.closest('[data-mpanel]')) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; } }, { passive: true });
+    box.addEventListener('touchend', function(e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
+      if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.5 || window.innerWidth >= 640) return;
+      var cur = keys.indexOf(box.querySelector('[data-mtab][aria-selected="true"]').getAttribute('data-mtab'));
+      var next = cur + (dx < 0 ? 1 : -1);
+      if (next >= 0 && next < keys.length) show(keys[next]);
+    }, { passive: true });
+    box.querySelectorAll('.m-tabs[hidden]').forEach(function(el) { el.hidden = false; });
+    box.classList.add('mtabs-on');
+    show(keys[0]);
+  });
+
   // ==================== Smooth Scroll ====================
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
