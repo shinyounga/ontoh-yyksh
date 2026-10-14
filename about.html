@@ -400,6 +400,16 @@
     </div>
   </section>
 
+  <!-- ==================== 모바일 바로가기 칩 (640px 미만 · 상단 고정) ==================== -->
+  <nav class="m-jump sm:hidden" aria-label="이 페이지 바로가기">
+    <div class="m-jump-track">
+      <button type="button" data-jump="mission">비전 · 미션</button>
+      <button type="button" data-jump="overview">회사개요</button>
+      <button type="button" data-jump="history">연혁</button>
+      <button type="button" data-jump="research">주요 성과</button>
+      <button type="button" data-jump="location">오시는 길</button>
+    </div>
+  </nav>
   <!-- ==================== 비전·미션 ==================== -->
   <section id="mission" class="border-b border-hair scroll-mt-24">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
@@ -473,7 +483,7 @@
         </div>
         <a href="patents.html" class="reveal inline-flex items-center gap-1.5 text-[16px] font-bold text-accent hover:gap-2.5 transition-all shrink-0">특허 · 논문 보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[14px]"></iconify-icon></a>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-hair border border-hair">
+      <div class="m-swipe m-swipe-boxed grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-hair border border-hair">
         <div class="reveal bg-white p-7 md:p-8 flex flex-col">
           <iconify-icon icon="solar:buildings-2-linear" class="self-start text-accent text-[32px]"></iconify-icon>
           <p class="mt-5 text-body-sm font-bold text-accent">현장 도입</p>

@@ -481,8 +481,16 @@
     </div>
   </section>
 
+  <!-- ==================== 모바일 바로가기 칩 (640px 미만 · 상단 고정) ==================== -->
+  <nav class="m-jump sm:hidden" aria-label="이 페이지 바로가기">
+    <div class="m-jump-track">
+      <button type="button" data-jump="features">주요 기능</button>
+      <button type="button" data-jump="views">관리자 · 작업자</button>
+      <button type="button" data-jump="extras">부가 기능</button>
+    </div>
+  </nav>
   <!-- ==================== 주요 기능 4가지 ==================== -->
-  <section class="border-b border-hair">
+  <section id="features" class="border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-14 md:py-20">
       <div class="mb-8 md:mb-10">
         <h2 id="feature-h2" class="text-h2 md:text-hero font-bold tracking-tight text-ink lg:whitespace-nowrap" style="line-height:1.2; letter-spacing:-0.02em;">
@@ -595,7 +603,7 @@
   </section>
 
   <!-- ==================== 두 화면, 하나의 흐름 (관리자|작업자 split) ==================== -->
-  <section class="border-b border-hair">
+  <section id="views" class="border-b border-hair" data-mtabs>
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="max-w-3xl mb-14">
         <h2 class="reveal text-h2 md:text-hero font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
@@ -605,9 +613,13 @@
           관리자는 현장 전체 현황을 집계하고, 작업자는 자신의 건강 상태를 이해합니다.
         </p>
       </div>
+      <div class="m-tabs sm:hidden" role="tablist" aria-label="화면 선택" hidden>
+        <button type="button" role="tab" data-mtab="admin" aria-selected="true">관리자 뷰</button>
+        <button type="button" role="tab" data-mtab="worker" aria-selected="false">작업자 뷰</button>
+      </div>
       <div class="grid md:grid-cols-2 gap-6 md:gap-8">
         <!-- 관리자 뷰 카드 -->
-        <div class="reveal border border-hair p-8 md:p-10 bg-band">
+        <div class="reveal border border-hair p-8 md:p-10 bg-band" data-mpanel="admin">
           <p class="text-body-sm font-extrabold text-accent uppercase tracking-[0.16em] mb-4">관리자 뷰</p>
           <h3 class="text-h3 md:text-h2 font-bold text-ink mb-3 leading-snug" style="letter-spacing:-0.015em;">대시보드로 현장 전체를 관리</h3>
           <p class="text-body-md text-sub leading-[1.7] mb-7">등록 작업자 · 고위험군 · 미등록자 현황을 실시간으로 집계합니다.</p>
@@ -619,7 +631,7 @@
           </ul>
         </div>
         <!-- 작업자 뷰 카드 -->
-        <div class="reveal stagger-1 border border-hair p-8 md:p-10">
+        <div class="reveal stagger-1 border border-hair p-8 md:p-10" data-mpanel="worker">
           <p class="text-body-sm font-extrabold text-accent uppercase tracking-[0.16em] mb-4">작업자 뷰</p>
           <h3 class="text-h3 md:text-h2 font-bold text-ink mb-3 leading-snug" style="letter-spacing:-0.015em;">모바일 앱으로 개인 건강 확인</h3>
           <p class="text-body-md text-sub leading-[1.7] mb-7">공단 검진 데이터를 시각화해 자신의 건강을 쉽게 이해합니다.</p>
@@ -635,12 +647,12 @@
   </section>
 
   <!-- ==================== 추가 특징 (4카드 확장) ==================== -->
-  <section class="bg-band border-b border-hair">
+  <section id="extras" class="bg-band border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
       <div class="max-w-3xl mb-12">
         <h2 class="reveal text-h2 md:text-h1 font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">관리 부담을 덜어주는 <span class="text-accent">부가 기능 4가지</span>.</h2>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="m-swipe grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="reveal card p-8">
           <iconify-icon icon="solar:document-medicine-linear" class="text-accent text-h1 mb-5"></iconify-icon>
           <h3 class="text-body-lg md:text-h3 font-bold text-ink mb-3 leading-snug" style="letter-spacing:-0.015em;">건강등급별 대응 가이드 자동 생성</h3>
