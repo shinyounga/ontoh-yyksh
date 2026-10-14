@@ -125,6 +125,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Esc 로 모바일 메뉴 닫기
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('open')) closeMobileMenu();
+  });
+
   // ==================== Smooth Scroll ====================
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {

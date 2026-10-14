@@ -127,6 +127,24 @@ html { font-size: 17px; }
   animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* 모바일 메뉴 · 그룹형 (회사소개 / 제품소개 / 기술·연구 + 하단 문의 고정) */
+.mm-body { overscroll-behavior: contain; }
+.mm-group { padding: 18px 0 14px; border-bottom: 1px solid #E5E7EB; }
+.mm-group:last-child { border-bottom: 0; }
+.mm-label { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; color: #555555; margin-bottom: 6px; }
+.mm-head { display: flex; align-items: center; justify-content: space-between; min-height: 48px; font-size: 22px; font-weight: 700; color: #0A2440; letter-spacing: -0.02em; }
+.mm-head iconify-icon, .mm-prod iconify-icon { color: #555555; font-size: 18px; flex-shrink: 0; }
+.mm-subs { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; }
+.mm-sub { display: flex; align-items: center; min-height: 44px; font-size: 17px; font-weight: 600; color: #212121; }
+.mm-prod { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; padding: 8px 0; }
+.mm-prod + .mm-prod { border-top: 1px solid #E5E7EB; }
+.mm-prod b { display: block; font-size: 19px; color: #0A2440; line-height: 1.2; }
+.mm-prod small { display: block; margin-top: 4px; font-size: 13px; font-weight: 500; color: #555555; }
+.mm-foot { padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
+.mm-mail { display: flex; align-items: center; justify-content: center; min-height: 44px; font-size: 13px; color: #555555; }
+.mobile-menu [aria-current="page"], .mobile-menu [aria-current="page"] b { color: #0169a9; }
+.mobile-menu a:active { background: #F5F6F8; }
+
 /* ==================== Scrollbar ==================== */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #eef2f7; }
@@ -257,4 +275,21 @@ nav.gnb .nav-item:not(:first-child) .nav-panel::before { height: 182px; }
 @media (max-width: 640px) {
   .ba-label { font-size: 12px !important; }
   .rc-no { font-size: 12px !important; }
+}
+
+/* 360px 대 푸터 링크 줄 넘침 방지 (분석 설정 버튼 nowrap 이후) */
+@media (max-width: 640px) {
+  footer div:has(> .ontoh-analytics-settings) { flex-wrap: wrap; column-gap: 16px; row-gap: 0; }
+}
+
+/* 브레드크럼 스트립 모바일 보정 (솔루션 3페이지와 동일 규칙을 공용화) */
+@media (max-width: 640px) {
+  .bc-cell { font-size: 14px; }
+  .bc-cell .bc-caret { display: none; }
+  .bc-cell.bc-menu { min-width: 0; padding: 0 10px; gap: 0; font-size: 13px; }
+  .bc-cell.bc-home { width: 44px; }
+  .bc-item { min-width: 0; }
+  .bc-row { min-width: 0; flex: 1 1 auto; }
+  .bc-strip-tools { flex-shrink: 0; gap: 0 !important; }
+  .bc-strip-tools button { min-width: 40px; justify-content: center; }
 }
