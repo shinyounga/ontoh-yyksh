@@ -239,7 +239,7 @@
       },
     }
   </script>
-  <link rel="stylesheet" href="css/common.css?v=20261014d">
+  <link rel="stylesheet" href="css/common.css?v=20261020a">
   <style>
     body { color: #212121; }
     /* -- State System (Focus/Disabled/Loading/Alert/Tag Variants) -- */
@@ -357,7 +357,7 @@
                   box-shadow .5s cubic-bezier(0.16,1,0.3,1),
                   border-color .5s cubic-bezier(0.16,1,0.3,1);
     }
-    .bento:hover, .bento:focus-visible {
+    .bento:hover, .bento:focus-within {
       transform: translateY(-4px); border-color:#0169a9;
       box-shadow: 0 28px 56px -24px rgba(1,105,169,.30);
     }
@@ -369,6 +369,8 @@
       font-size:15px; font-weight:700; color:#0169a9;
       transition: gap .4s cubic-bezier(0.16,1,0.3,1); }
     .bento:hover .bento-cta { gap:12px; }
+    .bento-ctas { margin-top:20px; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px 20px; }
+    .bento-ctas .bento-cta { margin-top:0; min-height:44px; }
     /* 목업은 카드 하단에 붙여 잘리게 둔다 (기기 아래쪽은 정보가 없다) */
     .bento-art { margin-top:auto; padding-top:32px; }
     .bento-art img {
@@ -384,8 +386,8 @@
       .bento-art-tall img { max-width:66%; }
     }
   </style>
-  <script defer src="js/analytics.js?v=20261014d"></script>
-  <script defer src="js/kakao-widget.js?v=20261014d"></script>
+  <script defer src="js/analytics.js?v=20261020a"></script>
+  <script defer src="js/kakao-widget.js?v=20261020a"></script>
 </head>
 <body class="bg-white font-sans antialiased">
   <!-- Skip to content · WCAG 2.4.1 -->
@@ -515,17 +517,20 @@
         <button type="button" role="tab" data-mtab="note" aria-selected="false"><span class="font-brand">LOOKAT NOTE</span></button>
       </div>
       <div class="grid md:grid-cols-2 gap-4 md:gap-5">
-        <a href="vision.html" class="bento reveal group" data-mpanel="lookat">
+        <div class="bento reveal group" data-mpanel="lookat">
           <div class="bento-head">
             <p class="bento-name"><span class="font-brand">LOOKAT</span></p>
             <p class="bento-kind">건설현장 Edge&nbsp;AI 안전관제</p>
             <p class="bento-sum">분석용 PC 없이 현장에서 AI가 위험을 판단하고,<br class="hidden sm:block"> 카메라가 필요한 곳을 찾아 확대해 확인합니다.</p>
-            <span class="bento-cta">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
+            <div class="bento-ctas">
+              <a href="vision.html" class="bento-cta card-link">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+              <button type="button" class="video-btn" data-yt-modal="UZ8paqmnDxc" data-yt-title="LOOKAT 서비스 소개 영상"><iconify-icon icon="solar:play-circle-bold"></iconify-icon>소개 영상 <small>1:12</small></button>
+            </div>
           </div>
           <div class="bento-art">
             <img src="assets/vision/dashboard2.webp" alt="LOOKAT 자율 관제 대시보드 화면" loading="lazy">
           </div>
-        </a>
+        </div>
         <a href="health.html" class="bento reveal stagger-1 group" data-mpanel="care">
           <div class="bento-head">
             <p class="bento-name"><span class="font-brand">ONTOH CARE</span></p>
@@ -538,23 +543,29 @@
           </div>
         </a>
       <!-- LOOKAT NOTE · 모바일 탭 전용 카드 (640px 이상은 아래 가로 띠로 표시) -->
-        <a href="lookat-note.html" class="bento note-bento group" data-mpanel="note">
+        <div class="bento note-bento group" data-mpanel="note">
           <div class="bento-head">
             <p class="bento-name"><span class="font-brand">LOOKAT NOTE</span></p>
             <p class="bento-kind">현장관리 앱</p>
             <p class="bento-sum">현장의 사진과 음성만으로 작업일지, 점검보고서가 간편하게 완성됩니다.</p>
-            <span class="bento-cta">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
+            <div class="bento-ctas">
+              <a href="lookat-note.html" class="bento-cta card-link">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+              <button type="button" class="video-btn" data-yt-modal="7Fsz9-ZVTg4" data-yt-title="LOOKAT NOTE 서비스 소개 영상"><iconify-icon icon="solar:play-circle-bold"></iconify-icon>소개 영상 <small>1:02</small></button>
+            </div>
           </div>
           <div class="bento-art bento-art-tall note-art">
             <img src="assets/lookat/note/01-photo.png" alt="LOOKAT NOTE 현장사진 촬영 화면" loading="lazy" width="720" height="872">
           </div>
-        </a>
+        </div>
       </div>
-      <a href="lookat-note.html" class="note-strip reveal mt-4 md:mt-5 group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 bg-white border border-hair px-6 md:px-8 py-5 hover:border-ink/30 transition-colors">
+      <div class="note-strip reveal relative mt-4 md:mt-5 group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 bg-white border border-hair px-6 md:px-8 py-5 hover:border-ink/30 transition-colors">
         <img src="assets/logo/lookat/lookat-symbol.webp" alt="" aria-hidden="true" class="w-10 h-10 shrink-0" loading="lazy" decoding="async">
         <p class="flex-1 text-[17px] md:text-[18px] text-sub leading-[1.6]"><b class="text-ink"><span class="font-brand">LOOKAT NOTE</span></b> <span class="hidden sm:inline">·</span> 사진과 음성만으로 작업일지 · 점검보고서를 완성하는 현장관리 앱</p>
-        <span class="inline-flex items-center gap-1.5 text-[15px] font-bold text-accent group-hover:gap-2.5 transition-all shrink-0">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
-      </a>
+        <div class="flex items-center gap-5 shrink-0">
+          <button type="button" class="video-btn" data-yt-modal="7Fsz9-ZVTg4" data-yt-title="LOOKAT NOTE 서비스 소개 영상"><iconify-icon icon="solar:play-circle-bold"></iconify-icon>소개 영상 <small>1:02</small></button>
+          <a href="lookat-note.html" class="card-link inline-flex items-center gap-1.5 min-h-[44px] text-[15px] font-bold text-accent group-hover:gap-2.5 transition-all">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -682,6 +693,8 @@
           <a href="privacy.html" class="text-sub hover:text-ink transition-colors font-semibold">개인정보처리방침</a>
           <span class="text-sub/40">|</span>
           <a href="terms.html" class="text-sub hover:text-ink transition-colors">이용약관</a>
+          <span class="text-sub/40">|</span>
+          <a href="https://www.youtube.com/@ontoh-1002" target="_blank" rel="noopener" class="text-sub hover:text-ink transition-colors">YouTube</a>
         </div>
       </div>
 
@@ -706,7 +719,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
-  <script src="js/common.js?v=20261014d"></script>
+  <script src="js/common.js?v=20261020a"></script>
 
   <!-- ==================== Hero 우측 · LOOKAT 1→2→3 순환 ==================== -->
   <script>

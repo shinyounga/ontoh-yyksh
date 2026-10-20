@@ -192,6 +192,24 @@
             }
           }
         ]
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://ontoh.co.kr/vision.html#video",
+        "name": "LOOKAT(루캣) 서비스 소개 영상",
+        "description": "AI가 카메라를 움직여 찾고, 판단하고, 보고합니다. LOOKAT(루캣)은 주식회사 온토가 만든 건설현장 Edge AI 솔루션입니다.",
+        "thumbnailUrl": [
+          "https://ontoh.co.kr/assets/video/lookat-thumb.webp",
+          "https://i.ytimg.com/vi/UZ8paqmnDxc/maxresdefault.jpg"
+        ],
+        "uploadDate": "2026-10-18T23:06:34-07:00",
+        "duration": "PT1M12S",
+        "contentUrl": "https://www.youtube.com/watch?v=UZ8paqmnDxc",
+        "embedUrl": "https://www.youtube-nocookie.com/embed/UZ8paqmnDxc",
+        "inLanguage": "ko",
+        "publisher": {
+          "@id": "https://ontoh.co.kr/#organization"
+        }
       }
     ]
   }
@@ -238,7 +256,7 @@
       } },
     }
   </script>
-  <link rel="stylesheet" href="css/common.css?v=20261014d">
+  <link rel="stylesheet" href="css/common.css?v=20261020a">
   <style>
     /* LOOKAT 브랜드 워드 · 제품명(LOOKAT · BASIC · EDGE+ · EDGE PRO)에만 사용 */
     .font-brand { font-family: 'Montserrat', 'Pretendard', sans-serif; font-weight: 900; letter-spacing: -0.01em; }
@@ -661,8 +679,8 @@
       .md\:order-2:has(> .kl), div:has(> .kl) { min-width: 0; }
     }
   </style>
-  <script defer src="js/analytics.js?v=20261014d"></script>
-  <script defer src="js/kakao-widget.js?v=20261014d"></script>
+  <script defer src="js/analytics.js?v=20261020a"></script>
+  <script defer src="js/kakao-widget.js?v=20261020a"></script>
 </head>
 <body class="bg-white font-sans antialiased">
   <!-- Skip to content · WCAG 2.4.1 -->
@@ -798,6 +816,7 @@
   <!-- ==================== 모바일 바로가기 칩 (640px 미만 · 상단 고정) ==================== -->
   <nav class="m-jump sm:hidden" aria-label="이 페이지 바로가기">
     <div class="m-jump-track">
+      <button type="button" data-jump="video">소개 영상</button>
       <button type="button" data-jump="how">작동 방식</button>
       <button type="button" data-jump="compare">법령 매칭</button>
       <button type="button" data-jump="detect">감지 상황</button>
@@ -847,6 +866,26 @@
     </div>
   </section>
 
+
+  <!-- ==================== 서비스 소개 영상 (YouTube · 누를 때만 플레이어 로드) ==================== -->
+  <section id="video" class="bg-ink border-b border-white/10 scroll-mt-28">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-24">
+      <div class="grid lg:grid-cols-[0.7fr_1.3fr] gap-8 lg:gap-14 items-center">
+        <div>
+          <p class="reveal text-body-sm font-bold uppercase tracking-[0.16em] text-[#F4C300] mb-4">Service Film</p>
+          <h2 class="reveal stagger-1 text-h2 md:text-h1 font-bold tracking-tight text-white" style="line-height:1.25; letter-spacing:-0.02em;">1분 영상으로 보는<br><span class="font-brand">LOOKAT</span></h2>
+          <p class="reveal stagger-1 mt-5 text-body-md text-white/70 leading-[1.75]">AI가 위험을 찾고, 카메라를 움직여 확인하고,<br class="hidden md:block"> 법령과 함께 정리하는 과정을 영상으로 확인하세요.</p>
+          <a href="https://www.youtube.com/@ontoh-1002" target="_blank" rel="noopener" class="reveal stagger-2 mt-6 inline-flex items-center gap-2 min-h-[44px] text-body-base font-bold text-white/80 hover:text-white transition-colors">YouTube 채널 보기 <iconify-icon icon="solar:arrow-right-up-linear" class="text-body-sm"></iconify-icon></a>
+        </div>
+        <div class="reveal stagger-2">
+          <button type="button" class="yt-facade" data-yt="UZ8paqmnDxc" aria-label="LOOKAT 서비스 소개 영상 재생 (1분 12초)">
+            <img src="assets/video/lookat-thumb.webp" alt="" width="1280" height="720" loading="lazy" decoding="async">
+            <span class="yt-play" aria-hidden="true"><iconify-icon icon="solar:play-bold"></iconify-icon>영상 재생 <small>1:12</small></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ==================== 작동 방식 · 찾고 → 판단하고 → 움직이고 → 확인한다 ==================== -->
   <section id="how" class="bg-band border-b border-hair">
@@ -1643,6 +1682,8 @@
           <a href="privacy.html" class="text-sub hover:text-ink transition-colors font-semibold">개인정보처리방침</a>
           <span class="text-sub/40">|</span>
           <a href="terms.html" class="text-sub hover:text-ink transition-colors">이용약관</a>
+          <span class="text-sub/40">|</span>
+          <a href="https://www.youtube.com/@ontoh-1002" target="_blank" rel="noopener" class="text-sub hover:text-ink transition-colors">YouTube</a>
         </div>
       </div>
 
@@ -1739,7 +1780,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
-  <script src="js/common.js?v=20261014d"></script>
+  <script src="js/common.js?v=20261020a"></script>
 
   <!-- ==================== GSAP · vision.html 전용 애니메이션 (Ex 01, 05, 09) ==================== -->
   <script>

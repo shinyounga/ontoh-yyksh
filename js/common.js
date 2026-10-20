@@ -192,14 +192,21 @@ document.addEventListener('DOMContentLoaded', function() {
         if (on && b.scrollIntoView) bar.firstElementChild.scrollTo({ left: b.offsetLeft - 24, behavior: 'smooth' });
       });
     }
+    // 다른 칩을 누르거나 사용자가 직접 스크롤하면 이전 보정은 취소
+    var jumpSeq = 0;
+    ['touchstart', 'wheel'].forEach(function(ev) {
+      window.addEventListener(ev, function(e) { if (!bar.contains(e.target)) jumpSeq++; }, { passive: true });
+    });
     btns.forEach(function(b) {
       b.addEventListener('click', function() {
         var t = document.getElementById(b.getAttribute('data-jump'));
         if (!t) return;
+        var seq = ++jumpSeq;
         window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - offset() + 1, behavior: 'smooth' });
         // 스크롤이 멈춘 뒤 지연 로딩 이미지 등으로 위치가 밀렸으면 보정
         var last = -1, tries = 0;
         setTimeout(function wait() {
+          if (seq !== jumpSeq) return;
           var y = window.pageYOffset;
           if (y !== last && ++tries < 40) { last = y; return setTimeout(wait, 100); }
           var d = t.getBoundingClientRect().top - offset();
@@ -284,6 +291,67 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+
+  // ==================== 서비스 소개 영상 (YouTube · 누를 때만 플레이어 로드) ====================
+  function ytSrc(id) {
+    return 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
+  }
+  function ytFrame(id, title) {
+    var f = document.createElement('iframe');
+    f.src = ytSrc(id);
+    f.title = title || 'YouTube 동영상';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    f.allowFullscreen = true;
+    return f;
+  }
+  // 페이지 안 영상: 썸네일 자리를 그대로 플레이어로 바꾼다
+  document.querySelectorAll('.yt-facade[data-yt]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var box = document.createElement('div');
+      box.className = 'yt-facade';
+      box.appendChild(ytFrame(btn.getAttribute('data-yt'), btn.getAttribute('aria-label')));
+      btn.replaceWith(box);
+      box.querySelector('iframe').focus();
+    });
+  });
+  // 카드의 '소개 영상' 버튼: 팝업으로 재생
+  var ytModal = null, ytReturn = null;
+  function closeYt() {
+    if (!ytModal || !ytModal.classList.contains('is-open')) return;
+    ytModal.classList.remove('is-open');
+    document.documentElement.classList.remove('yt-open');
+    ytModal.querySelector('.yt-modal-frame').innerHTML = '';
+    if (ytReturn) ytReturn.focus();
+  }
+  function openYt(id, title, opener) {
+    if (!ytModal) {
+      ytModal = document.createElement('div');
+      ytModal.className = 'yt-modal';
+      ytModal.setAttribute('role', 'dialog');
+      ytModal.setAttribute('aria-modal', 'true');
+      ytModal.innerHTML = '<div class="yt-modal-box"><div class="yt-modal-head"><p class="yt-modal-title"></p>' +
+        '<button type="button" class="yt-modal-close" aria-label="영상 닫기"><iconify-icon icon="solar:close-square-linear"></iconify-icon></button></div>' +
+        '<div class="yt-modal-frame"></div></div>';
+      document.body.appendChild(ytModal);
+      ytModal.addEventListener('click', function(e) { if (e.target === ytModal) closeYt(); });
+      ytModal.querySelector('.yt-modal-close').addEventListener('click', closeYt);
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeYt(); });
+    }
+    ytReturn = opener;
+    ytModal.setAttribute('aria-label', title);
+    ytModal.querySelector('.yt-modal-title').textContent = title;
+    ytModal.querySelector('.yt-modal-frame').appendChild(ytFrame(id, title));
+    document.documentElement.classList.add('yt-open');
+    ytModal.classList.add('is-open');
+    ytModal.querySelector('.yt-modal-close').focus();
+  }
+  document.querySelectorAll('[data-yt-modal]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault(); e.stopPropagation();
+      openYt(btn.getAttribute('data-yt-modal'), btn.getAttribute('data-yt-title') || '서비스 소개 영상', btn);
+    });
+  });
 });
 
 // ==================== Global Functions ====================

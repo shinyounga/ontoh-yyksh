@@ -154,6 +154,24 @@
           "@id": "https://ontoh.co.kr/#organization"
         },
         "url": "https://ontoh.co.kr/lookat-note.html"
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://ontoh.co.kr/lookat-note.html#video",
+        "name": "LOOKAT NOTE(루캣 노트) 서비스 소개 영상",
+        "description": "찍고, 말하면, 문서는 앱이 씁니다. 사진과 음성만으로 작업일지·점검보고서·사진대지가 완성되는 건설현장 관리 앱입니다.",
+        "thumbnailUrl": [
+          "https://ontoh.co.kr/assets/video/lookat-note-thumb.webp",
+          "https://i.ytimg.com/vi/7Fsz9-ZVTg4/maxresdefault.jpg"
+        ],
+        "uploadDate": "2026-10-18T23:06:23-07:00",
+        "duration": "PT1M2S",
+        "contentUrl": "https://www.youtube.com/watch?v=7Fsz9-ZVTg4",
+        "embedUrl": "https://www.youtube-nocookie.com/embed/7Fsz9-ZVTg4",
+        "inLanguage": "ko",
+        "publisher": {
+          "@id": "https://ontoh.co.kr/#organization"
+        }
       }
     ]
   }
@@ -200,7 +218,7 @@
       } },
     }
   </script>
-  <link rel="stylesheet" href="css/common.css?v=20261014d">
+  <link rel="stylesheet" href="css/common.css?v=20261020a">
   <style>
     /* LOOKAT 브랜드 워드 · 제품명(LOOKAT · BASIC · EDGE+ · EDGE PRO)에만 사용 */
     .font-brand { font-family: 'Montserrat', 'Pretendard', sans-serif; font-weight: 900; letter-spacing: -0.01em; }
@@ -624,8 +642,8 @@
       .md\:order-2:has(> .kl), div:has(> .kl) { min-width: 0; }
     }
   </style>
-  <script defer src="js/analytics.js?v=20261014d"></script>
-  <script defer src="js/kakao-widget.js?v=20261014d"></script>
+  <script defer src="js/analytics.js?v=20261020a"></script>
+  <script defer src="js/kakao-widget.js?v=20261020a"></script>
 </head>
 <body class="bg-white font-sans antialiased">
   <!-- Skip to content · WCAG 2.4.1 -->
@@ -836,6 +854,26 @@
     </div>
   </section>
 
+  <!-- ==================== 서비스 소개 영상 (YouTube · 누를 때만 플레이어 로드) ==================== -->
+  <section id="video" class="bg-ink border-b border-white/10 scroll-mt-28">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-24">
+      <div class="grid lg:grid-cols-[0.7fr_1.3fr] gap-8 lg:gap-14 items-center">
+        <div>
+          <p class="reveal text-body-sm font-bold uppercase tracking-[0.16em] text-[#F4C300] mb-4">Service Film</p>
+          <h2 class="reveal stagger-1 text-h2 md:text-h1 font-bold tracking-tight text-white" style="line-height:1.25; letter-spacing:-0.02em;">1분 영상으로 보는<br><span class="font-brand">LOOKAT</span> <span class="font-brand text-[#F4C300]">NOTE</span></h2>
+          <p class="reveal stagger-1 mt-5 text-body-md text-white/70 leading-[1.75]">사진을 찍고 보이는 대로 말하면,<br class="hidden md:block"> 작업일지와 점검보고서가 완성되는 과정을 영상으로 확인하세요.</p>
+          <a href="https://www.youtube.com/@ontoh-1002" target="_blank" rel="noopener" class="reveal stagger-2 mt-6 inline-flex items-center gap-2 min-h-[44px] text-body-base font-bold text-white/80 hover:text-white transition-colors">YouTube 채널 보기 <iconify-icon icon="solar:arrow-right-up-linear" class="text-body-sm"></iconify-icon></a>
+        </div>
+        <div class="reveal stagger-2">
+          <button type="button" class="yt-facade" data-yt="7Fsz9-ZVTg4" aria-label="LOOKAT NOTE 서비스 소개 영상 재생 (1분 2초)">
+            <img src="assets/video/lookat-note-thumb.webp" alt="" width="1280" height="720" loading="lazy" decoding="async">
+            <span class="yt-play" aria-hidden="true"><iconify-icon icon="solar:play-bold"></iconify-icon>영상 재생 <small>1:02</small></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== 우리 회사에 맞게 ==================== -->
   <section class="bg-band border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
@@ -893,6 +931,8 @@
           <a href="privacy.html" class="text-sub hover:text-ink transition-colors font-semibold">개인정보처리방침</a>
           <span class="text-sub/40">|</span>
           <a href="terms.html" class="text-sub hover:text-ink transition-colors">이용약관</a>
+          <span class="text-sub/40">|</span>
+          <a href="https://www.youtube.com/@ontoh-1002" target="_blank" rel="noopener" class="text-sub hover:text-ink transition-colors">YouTube</a>
         </div>
       </div>
 
@@ -936,6 +976,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
-  <script src="js/common.js?v=20261014d"></script>
+  <script src="js/common.js?v=20261020a"></script>
 </body>
 </html>
