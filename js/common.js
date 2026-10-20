@@ -315,43 +315,6 @@ document.addEventListener('DOMContentLoaded', function() {
       box.querySelector('iframe').focus();
     });
   });
-  // 카드의 '소개 영상' 버튼: 팝업으로 재생
-  var ytModal = null, ytReturn = null;
-  function closeYt() {
-    if (!ytModal || !ytModal.classList.contains('is-open')) return;
-    ytModal.classList.remove('is-open');
-    document.documentElement.classList.remove('yt-open');
-    ytModal.querySelector('.yt-modal-frame').innerHTML = '';
-    if (ytReturn) ytReturn.focus();
-  }
-  function openYt(id, title, opener) {
-    if (!ytModal) {
-      ytModal = document.createElement('div');
-      ytModal.className = 'yt-modal';
-      ytModal.setAttribute('role', 'dialog');
-      ytModal.setAttribute('aria-modal', 'true');
-      ytModal.innerHTML = '<div class="yt-modal-box"><div class="yt-modal-head"><p class="yt-modal-title"></p>' +
-        '<button type="button" class="yt-modal-close" aria-label="영상 닫기"><iconify-icon icon="solar:close-square-linear"></iconify-icon></button></div>' +
-        '<div class="yt-modal-frame"></div></div>';
-      document.body.appendChild(ytModal);
-      ytModal.addEventListener('click', function(e) { if (e.target === ytModal) closeYt(); });
-      ytModal.querySelector('.yt-modal-close').addEventListener('click', closeYt);
-      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeYt(); });
-    }
-    ytReturn = opener;
-    ytModal.setAttribute('aria-label', title);
-    ytModal.querySelector('.yt-modal-title').textContent = title;
-    ytModal.querySelector('.yt-modal-frame').appendChild(ytFrame(id, title));
-    document.documentElement.classList.add('yt-open');
-    ytModal.classList.add('is-open');
-    ytModal.querySelector('.yt-modal-close').focus();
-  }
-  document.querySelectorAll('[data-yt-modal]').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault(); e.stopPropagation();
-      openYt(btn.getAttribute('data-yt-modal'), btn.getAttribute('data-yt-title') || '서비스 소개 영상', btn);
-    });
-  });
 });
 
 // ==================== Global Functions ====================
