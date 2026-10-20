@@ -192,14 +192,21 @@ document.addEventListener('DOMContentLoaded', function() {
         if (on && b.scrollIntoView) bar.firstElementChild.scrollTo({ left: b.offsetLeft - 24, behavior: 'smooth' });
       });
     }
+    // 다른 칩을 누르거나 사용자가 직접 스크롤하면 이전 보정은 취소
+    var jumpSeq = 0;
+    ['touchstart', 'wheel'].forEach(function(ev) {
+      window.addEventListener(ev, function(e) { if (!bar.contains(e.target)) jumpSeq++; }, { passive: true });
+    });
     btns.forEach(function(b) {
       b.addEventListener('click', function() {
         var t = document.getElementById(b.getAttribute('data-jump'));
         if (!t) return;
+        var seq = ++jumpSeq;
         window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - offset() + 1, behavior: 'smooth' });
         // 스크롤이 멈춘 뒤 지연 로딩 이미지 등으로 위치가 밀렸으면 보정
         var last = -1, tries = 0;
         setTimeout(function wait() {
+          if (seq !== jumpSeq) return;
           var y = window.pageYOffset;
           if (y !== last && ++tries < 40) { last = y; return setTimeout(wait, 100); }
           var d = t.getBoundingClientRect().top - offset();
@@ -284,6 +291,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+
+  // ==================== 서비스 소개 영상 (YouTube · 누를 때만 플레이어 로드) ====================
+  function ytSrc(id) {
+    return 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
+  }
+  function ytFrame(id, title) {
+    var f = document.createElement('iframe');
+    f.src = ytSrc(id);
+    f.title = title || 'YouTube 동영상';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    f.allowFullscreen = true;
+    return f;
+  }
+  // 페이지 안 영상: 썸네일 자리를 그대로 플레이어로 바꾼다
+  document.querySelectorAll('.yt-facade[data-yt]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var box = document.createElement('div');
+      box.className = 'yt-facade';
+      box.appendChild(ytFrame(btn.getAttribute('data-yt'), btn.getAttribute('aria-label')));
+      btn.replaceWith(box);
+      box.querySelector('iframe').focus();
+    });
+  });
 });
 
 // ==================== Global Functions ====================
