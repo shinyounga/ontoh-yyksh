@@ -326,6 +326,8 @@ nav.gnb .nav-item:not(:first-child) .nav-panel::before { height: 182px; }
   .m-swipe-boxed > * { border: 1px solid #E5E7EB; }
   .m-swipe-bar + #partners > .grid { margin-top: 20px; border-top-width: 1px !important; }
   .m-swipe-bar { display: block; position: relative; height: 2px; margin-top: 16px; background: #E5E7EB; }
+  .bg-ink .m-swipe-bar { background: rgba(255,255,255,.16); }
+  .bg-ink .m-swipe-bar > i { background: #F4C300; }
   .m-swipe-bar > i { position: absolute; left: 0; top: 0; bottom: 0; background: #0169a9; transition: width .3s cubic-bezier(0.16,1,0.3,1); }
 }
 
