@@ -387,7 +387,7 @@
       .bento-art-tall:not(.note-art) img { margin-right:5%; }
     }
   </style>
-  <script defer src="js/analytics.js?v=20261029a"></script>
+  <script defer src="js/analytics.js?v=20261029b"></script>
   <script defer src="js/kakao-widget.js?v=20261020g"></script>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -634,7 +634,7 @@
         <a href="about.html#history" class="reveal shrink-0 inline-flex items-center gap-2 text-[16.5px] font-bold text-ink hover:gap-3 spring">자세히 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
       </div>
       <div class="reveal border-t-2 border-ink">
-        <a href="news.html#expo-2026" class="news-row flex items-center gap-5 px-3 md:px-5 py-5 border-b border-hair group">
+        <a href="news-expo-2026.html" class="news-row flex items-center gap-5 px-3 md:px-5 py-5 border-b border-hair group">
           <span class="tag bg-ink/[0.06] text-ink shrink-0">참가</span>
           <p class="flex-1 text-[18px] md:text-[22px] font-semibold text-ink truncate group-hover:text-accent spring">2026 한국건설·안전박람회 현장 스케치 (KINTEX · 부스 H093)</p>
           <span class="hidden sm:block text-[15px] text-sub/85 shrink-0 tabular-nums">2026.10</span>
@@ -726,8 +726,6 @@
           <a href="terms.html" class="text-sub hover:text-ink transition-colors">이용약관</a>
           <span class="text-sub/40">|</span>
           <a href="email-policy.html" class="text-sub hover:text-ink transition-colors">이메일무단수집거부</a>
-          <span class="text-sub/40">|</span>
-          <a href="https://www.youtube.com/@ontoh-1002" target="_blank" rel="noopener" class="text-sub hover:text-ink transition-colors">YouTube</a>
         </div>
       </div>
 
@@ -745,7 +743,13 @@
       </div>
 
       <!-- 카피라이트 -->
-      <p class="ft-copy mt-6 pt-4 border-t border-hair/60 text-sub/85 text-[13px]">&copy; 2026 주식회사 온토. All rights reserved.</p>
+      <div class="ft-copy mt-6 pt-4 border-t border-hair/60 text-sub/85 text-[13px] flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+        <p>&copy; 2026 주식회사 온토. All rights reserved.</p>
+        <!-- 웹사이트 분석 설정 버튼은 js/analytics.js 가 이 줄 앞쪽에 넣음 -->
+        <div class="ft-util flex items-center gap-5">
+          <a href="https://www.youtube.com/@ontoh-1002" target="_blank" rel="noopener" class="inline-flex items-center justify-center min-h-[40px] text-sub hover:text-ink transition-colors" aria-label="온토 YouTube 채널 (새 창)" title="YouTube"><iconify-icon icon="mdi:youtube" class="text-[22px]" aria-hidden="true"></iconify-icon></a>
+        </div>
+      </div>
     </div>
   </footer>
 

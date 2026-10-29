@@ -33,5 +33,11 @@
 
 - [홈](https://ontoh.co.kr/)
 - [회사소개](https://ontoh.co.kr/about.html): 비전·미션, 회사개요, 연혁, 특허·논문 요약, 협력 · 지원 기관
-- [기술 · 연구 (특허 · 논문)](https://ontoh.co.kr/patents.html)
+- [소식 · 자료 > 공지 · 소식](https://ontoh.co.kr/news.html): 전시회 참가, 정책 개정 등 온토의 공지사항과 소식
+- [소식 · 자료 > 특허 · 논문](https://ontoh.co.kr/patents.html)
 - [문의 · 도입 상담](https://ontoh.co.kr/contact.html)
+
+## 소식
+
+- [2026 한국건설·안전박람회 현장 스케치](https://ontoh.co.kr/news-expo-2026.html) (2026-10-29): 온토는 2026 한국건설·안전박람회(K-CON·SAFETY EXPO, KINTEX, 2026.10.14–10.16, 부스 H093)에 참가해 LOOKAT과 LOOKAT NOTE를 선보였습니다. 사흘간 300여 명의 관람객이 부스를 찾았고, DANGER 팻말을 든 사람을 카메라가 스스로 찾아가 확인하는 AUTO PTZ 체험과 LOOKAT NOTE 시연을 진행했습니다.
+- [개인정보처리방침·이용약관 개정 안내](https://ontoh.co.kr/news-notice-20261029.html) (2026-10-29): 개인정보처리방침 v1.2 및 이용약관 정비, 2026년 10월 29일 시행.
