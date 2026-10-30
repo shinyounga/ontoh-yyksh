@@ -266,7 +266,7 @@
     .nav-item:hover .nav-top::after { transform:scaleX(1); }
     .gnb-megabar { position:absolute; left:0; right:0; top:100%; height:210px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
     .nav-panel { position:absolute; top:100%; left:20px; opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:22; pointer-events:none; }
-    header:has(.gnb:hover) .gnb-megabar, header:has(.gnb-megabar:hover) .gnb-megabar, header:has(.gnb:hover) .nav-panel, header:has(.gnb-megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
+    header:has(.gnb:hover) .gnb-megabar, header:has(.gnb-megabar:hover) .gnb-megabar, header:has(.gnb:hover) .nav-panel, header:has(.gnb-megabar:hover) .nav-panel, header:has(.gnb:focus-within) .gnb-megabar, header:has(.gnb:focus-within) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
     .gnb-panel-box { padding:32px 0 36px; }
     .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:210px; width:1px; background:#E5E7EB; }
     .dropdown-link { display:flex; align-items:center; font-size:15px; color:#555555; padding:8px 40px 8px 16px; white-space:nowrap; position:relative; transition:color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); }
@@ -427,9 +427,9 @@
 
         <div class="bc-strip-tools inline-flex items-stretch gap-5 text-white/70 text-[15px]">
           <span class="w-px bg-white/25" aria-hidden="true"></span>
-          <button type="button" onclick="fontResize('up')" class="hover:text-white transition-colors font-semibold flex items-center leading-none" aria-label="글자 크게">+</button>
+          <button type="button" onclick="fontResize('up')" class="hover:text-white transition-colors font-semibold flex items-center justify-center min-w-[32px] leading-none" aria-label="글자 크게">+</button>
           <span class="w-px bg-white/25" aria-hidden="true"></span>
-          <button type="button" onclick="fontResize('down')" class="hover:text-white transition-colors font-semibold flex items-center leading-none" aria-label="글자 작게">−</button>
+          <button type="button" onclick="fontResize('down')" class="hover:text-white transition-colors font-semibold flex items-center justify-center min-w-[32px] leading-none" aria-label="글자 작게">−</button>
           <span class="w-px bg-white/25" aria-hidden="true"></span>
         </div>
       </div>
@@ -453,8 +453,8 @@
       <header class="mb-14 pb-10 border-b border-hair">
         <p class="kicker mb-4">이메일무단수집거부</p>
         <p class="text-body-lg text-sub">
-          본 홈페이지에 게시된 이메일 주소가 <span class="whitespace-nowrap">전자우편 수집 프로그램이나</span> 그 밖의 기술적 장치를 이용하여 <strong class="text-ink font-bold">무단으로 수집되는 것을 거부</strong>합니다.
-          이를 위반하면 <span class="whitespace-nowrap">「정보통신망 이용촉진 및 정보보호 등에 관한 법률」에</span> 따라 <span class="whitespace-nowrap">처벌받을 수 있습니다.</span>
+          본 홈페이지에 게시된 이메일 주소가 <span class="sm:whitespace-nowrap">전자우편 수집 프로그램이나</span> 그 밖의 기술적 장치를 이용하여 <strong class="text-ink font-bold">무단으로 수집되는 것을 거부</strong>합니다.
+          이를 위반하면 <span class="sm:whitespace-nowrap">「정보통신망 이용촉진 및 정보보호 등에 관한 법률」에</span> 따라 <span class="sm:whitespace-nowrap">처벌받을 수 있습니다.</span>
         </p>
         <div class="mt-5 inline-flex items-center gap-2 text-body-sm text-sub">
           <iconify-icon icon="solar:calendar-linear" class="text-accent text-[18px]"></iconify-icon>
@@ -478,7 +478,7 @@
         <ul style="list-style:none; padding-left:0;">
           <li>5. 제50조의2를 위반하여 전자우편주소를 수집·판매·유통하거나 정보 전송에 이용한 자</li>
         </ul>
-        <p class="text-[15px] text-sub">※ 법령 원문은 <a href="https://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률" target="_blank" rel="noopener" class="text-accent hover:underline">국가법령정보센터</a>에서 확인할 수 있습니다.</p>
+        <p class="text-[15px] text-sub">※ 법령 원문은 <a href="https://www.law.go.kr/법령/정보통신망이용촉진및정보보호등에관한법률" target="_blank" rel="noopener" class="text-accent underline underline-offset-2">국가법령정보센터</a>에서 확인할 수 있습니다.</p>
 
       </article>
 
@@ -526,7 +526,7 @@
       </div>
 
       <!-- 카피라이트 -->
-      <div class="ft-copy mt-6 pt-4 border-t border-hair/60 text-sub/85 text-[13px] flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+      <div class="ft-copy mt-6 pt-4 border-t border-hair/60 text-sub text-[13px] flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
         <p>&copy; 2026 주식회사 온토. All rights reserved.</p>
         <!-- 웹사이트 분석 설정 버튼은 js/analytics.js 가 이 줄 앞쪽에 넣음 -->
         <div class="ft-util flex items-center gap-5">
