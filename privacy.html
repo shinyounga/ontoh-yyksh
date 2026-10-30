@@ -240,19 +240,25 @@
       color: #555555; margin-bottom: 6px;
     }
     .privacy-content ul li::marker { color: #0169a9; }
-    .privacy-content table {
-      display: block; overflow-x: auto; -webkit-overflow-scrolling: touch;
-      width: 100%; border-collapse: collapse;
+    /* 표: 감싼 상자가 모바일 가로 스크롤을 맡고, 표는 항상 전체 폭 */
+    .privacy-content .table-wrap {
       margin: 16px 0 24px;
-      font-size: 15px;
-      border: 1px solid #E5E7EB;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      border-top: 2px solid #0A2440;
     }
+    .privacy-content table {
+      width: 100%; border-collapse: collapse;
+      font-size: 15px; line-height: 1.65;
+      word-break: keep-all;
+    }
+    .privacy-content table:has(thead) { min-width: 560px; }
     .privacy-content table th {
       background: #F5F6F8;
       padding: 14px 16px;
       font-weight: 700; color: #0A2440;
-      text-align: left;
+      text-align: left; vertical-align: top;
       border-bottom: 1px solid #E5E7EB;
+      white-space: nowrap;
     }
     .privacy-content table td {
       padding: 14px 16px;
@@ -260,6 +266,7 @@
       border-bottom: 1px solid #E5E7EB;
       vertical-align: top;
     }
+    .privacy-content table td:first-child strong { color: #0A2440; }
     .privacy-content table tr:last-child td { border-bottom: 0; }
     .privacy-content strong { color: #0A2440; font-weight: 700; }
     .nav-item { position:relative; }
@@ -484,6 +491,7 @@
 
         <h2>2. 수집하는 개인정보 항목 및 수집 방법</h2>
         <h3>가. 수집 항목</h3>
+        <div class="table-wrap">
         <table>
           <thead>
             <tr>
@@ -520,6 +528,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
         <h3>나. 수집 방법</h3>
         <ul>
           <li>홈페이지 문의하기 폼을 통한 정보주체의 직접 입력</li>
@@ -556,6 +565,7 @@
 
         <h2>6. 개인정보 처리의 위탁</h2>
         <p>회사는 원활한 개인정보 업무 처리를 위하여 다음과 같이 개인정보 처리 업무를 위탁하고 있습니다.</p>
+        <div class="table-wrap">
         <table>
           <thead>
             <tr>
@@ -592,6 +602,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
         <p>위탁업무의 내용이나 수탁업체가 변경될 경우에는 지체 없이 본 개인정보처리방침을 통하여 공개합니다.</p>
         <p class="text-[15px] text-sub">※ 위탁 계약 체결 시 「개인정보 보호법」 제26조에 따라 위탁업무 수행 목적 외 개인정보 처리 금지, 기술적·관리적 보호조치, 재위탁 제한, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁업체가 개인정보를 안전하게 처리하는지 감독합니다.</p>
 
@@ -684,6 +695,7 @@
           <li><strong>변경 및 철회</strong>: 모든 페이지 하단의 웹사이트 분석 설정에서 선택을 변경할 수 있습니다.<br class="sm:hidden"> 허용 후 거부하면 분석을 중단하고 현재 도메인의 해당 분석 쿠키를 삭제한 뒤 페이지를 새로고침합니다.</li>
           <li><strong>브라우저 설정</strong>: 웹 브라우저의 설정 메뉴(예: Chrome 설정 › 개인정보 및 보안 › 서드 파티 쿠키)에서 쿠키 저장을 거부하거나 삭제할 수도 있습니다.</li>
         </ul>
+        <div class="table-wrap">
         <table>
           <thead>
             <tr>
@@ -720,6 +732,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
         <p>분석 정보는 Google 및 Microsoft의 서비스로 전송되어 처리됩니다. 각 서비스의 처리 방법은 <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener" class="text-accent underline underline-offset-2">Google의 사이트 및 앱 정보 이용 안내</a>와 <a href="https://clarity.microsoft.com/privacy" target="_blank" rel="noopener" class="text-accent underline underline-offset-2">Microsoft Clarity 개인정보 안내</a>에서 확인할 수 있습니다.</p>
         <p><strong>오시는 길 지도(Google 지도)</strong>: 회사소개 페이지의 오시는 길 지도는 Google 지도를 삽입해 제공하며, 해당 영역이 표시되면 IP 주소, 기기·브라우저 정보가 Google로 전송되고 Google 쿠키가 저장될 수 있습니다. 이는 웹사이트 분석 설정과 별개이며, 브라우저 설정에서 서드 파티 쿠키를 차단할 수 있습니다.</p>
         <p><strong>서비스 소개 영상(YouTube)</strong>: 홈페이지의 서비스 소개 영상 플레이어는 방문자가 재생 버튼을 누른 경우에만 YouTube 개인정보 보호 강화 모드(youtube-nocookie.com)로 불러옵니다. 재생 전에는 영상 미리보기 이미지만 Google 서버(i.ytimg.com)에서 불러오며 이때 IP 주소가 전송될 수 있습니다. 재생하면 IP 주소, 기기·브라우저 정보 등이 Google(YouTube)로 전송되어 처리될 수 있으며, 자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-accent underline underline-offset-2">Google 개인정보처리방침</a>에서 확인할 수 있습니다.</p>
@@ -735,10 +748,11 @@
 
         <h2>14. 개인정보 보호책임자 및 열람청구 접수·처리 부서</h2>
         <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만 처리 및 피해 구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+        <div class="table-wrap">
         <table>
           <tbody>
             <tr>
-              <th style="width: 130px;">성명</th>
+              <th style="width: 120px;">성명</th>
               <td><strong>김태건</strong> (대표이사)</td>
             </tr>
             <tr>
@@ -747,10 +761,11 @@
             </tr>
             <tr>
               <th>주소</th>
-              <td>서울특별시 서대문구 연세로2나길 61, 캠퍼스타운에스큐브 304호</td>
+              <td>(03777) 서울특별시 서대문구 연세로2나길 61, 캠퍼스타운에스큐브 304호</td>
             </tr>
           </tbody>
         </table>
+        </div>
         <p>정보주체는 「개인정보 보호법」 제35조에 따른 개인정보 열람청구를 위 개인정보 보호책임자에게 할 수 있으며, 회사는 열람청구가 신속하게 처리되도록 노력하겠습니다.</p>
 
         <h2>15. 권익 침해 구제 방법</h2>
@@ -772,6 +787,7 @@
           <li>② 법령이나 회사 방침에 따라 내용을 추가·삭제·정정하는 경우, 변경 내용과 시행일을 시행 7일 전부터 홈페이지를 통하여 고지합니다. 다만, 이미 시행 중인 처리 내용을 더 자세히 안내하거나 문구를 정비하는 등 정보주체에게 불리하지 않은 변경은 홈페이지에 공고한 날부터 시행할 수 있으며, 이 경우 아래 개정 이력에 그 사실을 표시합니다.</li>
           <li>③ 새로운 개인정보 항목의 수집, 이용 목적의 변경 등 정보주체의 권리에 중요한 영향을 주는 변경은 시행 30일 전부터 고지하며, 필요한 경우 다시 동의를 받습니다.</li>
         </ol>
+        <div class="table-wrap">
         <table>
           <thead>
             <tr>
@@ -802,6 +818,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
         <p class="text-[15px] text-sub">※ 이전 버전의 개인정보처리방침 전문은 <a href="mailto:contact@ontoh.co.kr" class="text-accent underline underline-offset-2">contact@ontoh.co.kr</a>로 요청하시면 제공해 드립니다.</p>
 
       </article>
