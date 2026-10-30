@@ -372,6 +372,7 @@ nav.gnb .nav-item:not(:first-child) .nav-panel::before { height: 182px; }
   footer .ft-top > div { flex-wrap: wrap; gap: 0 !important; font-size: 13px; }
   footer .ft-top > div > span { display: none; }
   footer .ft-top > div > a, footer .ft-top > div > button { display: inline-flex; align-items: center; min-height: 40px; padding: 0 !important; margin-right: 18px; white-space: nowrap; }
+  footer .ft-top > div > a.ft-sns { width: 40px; justify-content: center; margin-left: 0; }
   footer .ft-info { display: grid !important; gap: 6px !important; font-size: 13px; line-height: 1.6; }
   footer .ft-info > span[aria-hidden="true"] { display: none; }
   footer .ft-info > span:first-child { font-size: 15px; margin-bottom: 4px; }
